@@ -4,15 +4,18 @@ const hotelModel = require('./hoteles.model');
 
 module.exports.registrar_hotel = function (req, res) {
     let nuevoHotel = new hotelModel({
-        nombre_hotel: req.body.nombre_hotel,
-        latitud_hotel: req.body.latitud_hotel,
-        longitud_hotel: req.body.longitud_hotel,
-        provincia_hotel: req.body.provincia_hotel,
-        canton_hotel: req.body.canton_hotel,
-        distrito_hotel: req.body.distrito_hotel,
-        direccion_hotel: req.body.direccion_hotel,
-        telefono_hotel: req.body.telefono_hotel,
-        correo_hotel: req.body.correo_hotel
+        nombre: req.body.nombre,
+        latitud: req.body.latitud,
+        longitud: req.body.longitud,
+        provincia: req.body.provincia,
+        canton: req.body.canton,
+        distrito: req.body.distrito,
+        direccion: req.body.direccion,
+        telefono_servicio: req.body.telefono_servicio,
+        correo_servicio: req.body.correo_servicio,
+        telefono_reservacion: req.body.telefono_reservacion,
+        correo_reservacion: req.body.correo_reservacion,
+        estrellas_hotel: 0
     })
 
     nuevoHotel.save(function (error) {
@@ -61,4 +64,28 @@ module.exports.modificar_hotel = function (req, res) {
                 res.json({ success: true, msg: 'Se ha actualizado correctamente. ' + res });
             }
         });
+};
+
+module.exports.agregar_ranking = function (req, res) {
+
+    hotelModel.update(
+        { _id: req.body._id },
+        {
+            $push:
+            {
+                'rank':
+                {
+                    usuario_rank: req.body.usuario_rank,
+                    promedio_rank: req.body.promedio_rank,
+                }
+            }
+        },
+        function (error) {
+            if (error) {
+                res.json({ success: false, msg: 'No se pudo registrar la calificación, ocurrió el siguiente error' + error });
+            } else {
+                res.json({ success: true, msg: 'Se ha registrado la calificación correctamente. ' + res });
+            }
+        }
+    )
 };

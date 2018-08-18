@@ -3,15 +3,24 @@
 let mongoose = require('mongoose');
 
 let hotelSchema = new mongoose.Schema({
-    nombre_hotel: { type: String, required: true },
-    latitud_hotel: { type: String, required: true },
-    longitud_hotel: { type: String, required: true },
-    provincia_hotel: { type: String, require: true },
-    canton_hotel: { type: String, require: true },
-    distrito_hotel: { type: String, require: true },
-    direccion_hotel: { type: String, require: true },
-    telefono_hotel: { type: String, required: true },
-    correo_hotel: { type: String, required: true }
+    nombre: { type: String, required: true },
+    latitud: { type: String, required: true },
+    longitud: { type: String, required: true },
+    provincia: { type: String, require: true },
+    canton: { type: String, require: true },
+    distrito: { type: String, require: true },
+    direccion: { type: String, require: true },
+    telefono_servicio: { type: String, required: true },
+    correo_servicio: { type: String, required: true },
+    telefono_reservacion: { type: String, required: true },
+    correo_reservacion: { type: String, required: true },
+    estrellas: { type: Number},
+    rank:[
+        {
+            usuario_rank: { type: String},
+            promedio_rank: { type: Number}
+        }
+    ]
 });
 
 module.exports = mongoose.model('Hotel', hotelSchema);

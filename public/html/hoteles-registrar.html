@@ -6,10 +6,10 @@
     <title>Hoteles Costa Rica</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/mapa_styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
     <link rel="stylesheet" href="../css/estandar.css">
+    <link rel="stylesheet" href="../css/mapa_styles.css">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Catamaran:400|Kanit:100" rel="stylesheet">
@@ -27,13 +27,51 @@
             <a href="../html/clientes.html">Clientes</a>
         </nav>
     </header>
-    <div id="mapa"></div>
-    <main>
 
+    <main>
         <div class="text-box-border">
             <div class="text-box-content">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus expedita provident sequi, vero nisi sapiente totam
-                dolores laudantium, ipsum deserunt pariatur. Nobis iure eum ipsam libero veniam dignissimos accusantium dolor.
+
+                <form class="hotel-form" name="registrar">
+                    <label for="mapLocation">Localización en mapa</label>
+                    <div id="mapa"></div>
+                    <!-- Todos los inputs necesarios para el modificar y registrar estan en este formulario -->
+                    <!-- Todos los inputs necesarios para el modificar y registrar estan en este formulario -->
+                    <div class="form">
+                        <label for="txtNombre">Nombre*</label>
+                        <input id="txtNombre" type="text" required placeholder="Hotel Paraíso">
+
+                        <label for="txtUbicacionEscrita">Ubicación exacta*</label>
+                        <input id="txtUbicacionEscrita" type="text" required placeholder="Del Palí de orotina, 100m sur, 400m oeste.">
+
+                        <label for="sltProvincia">Provincia*</label>
+                        <select name="" id="sltProvincia">
+
+                        </select>
+                        <label for="sltCanton">Cantón*</label>
+                        <select name="" id="sltCanton">
+
+                        </select>
+                        <label for="sltDistrito">Distrito*</label>
+                        <select name="" id="sltDistrito">
+
+                        </select>
+
+                        <label for="txtTelCliente">Teléfono servicio al cliente*</label>
+                        <input id="txtTelCliente" type="text" required placeholder="88202000">
+                        <label for="txtCorreoCliente">Correo servicio al cliente*</label>
+                        <input id="txtCorreoCliente" type="text" required placeholder="ejemplo-correo@gmail.com">
+
+                        <label for="txtTelRes">Teléfono reservaciones*</label>
+                        <input id="txtTelRes" type="text" required placeholder="82156356">
+                        <label for="txtCorreoRes">Correo reservaciones*</label>
+                        <input id="txtCorreoRes" type="text" required placeholder="ejemplo-correo@gmail.com">
+                    </div>
+                    <!-- Todos los inputs necesarios para el modificar y registrar estan en este formulario -->
+                    <!-- Todos los inputs necesarios para el modificar y registrar estan en este formulario -->
+                </form>
+                <button type="button" id="btnCancelar" name="form-button">Cancelar</button>
+                <button type="button" id="btnGuardar" name="form-button">Guardar</button>
             </div>
         </div>
     </main>
@@ -85,12 +123,15 @@
 
     <script src="../js/jquery-3.3.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
+    <script src="../js/moment-2.22.2.js"></script>
 
+    <script src="../js/hoteles/hoteles_servicio.js"></script>
+
+    <!-- Controlador usuario -->
+    <script src="../js/hoteles/hoteles_controlador.js"></script>
+    <script src="../js/hoteles/hoteles_ubicaciones.js"></script>
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQSrrB_vyRukFOkul1HqvmyJ0GpPE1Agk&callback=initMap"></script>
     <script src="../js/mapa.js"></script>
-
-    <script>
-
-    </script>
-
 </body>
+
+</html>

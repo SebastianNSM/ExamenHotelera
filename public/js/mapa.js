@@ -17,7 +17,7 @@ function initMap() {
 
     //configuracion del mapa (tendra zoom de 7) y se centrara en la posicion guardada
     let opciones = {
-        zoom: 6.5,
+        zoom: 7,
         center: crCentro
     }
     

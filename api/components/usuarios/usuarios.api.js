@@ -13,7 +13,8 @@ module.exports.registrar_usuario = function (req, res) {
         sApellido_usuario: req.body.sApellido_usuario,
         fecha_nacimiento_usuario: req.body.fecha_nacimiento_usuario,
         sexo_usuario: req.body.sexo_usuario,
-        contrasenna_usuario: req.body.contrasenna_usuario
+        contrasenna_usuario: req.body.contrasenna_usuario,
+        rol_usuario: "cliente"
         
     })
 

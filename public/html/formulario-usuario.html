@@ -30,7 +30,7 @@
     <main>
         <div class="text-box-border">
             <div class="text-box-content">
-                <form class="form">
+                <form class="form" name="registrar">
 
                     <!-- Todos los inputs necesarios para el modificar y registrar estan en este formulario -->
                     <!-- Todos los inputs necesarios para el modificar y registrar estan en este formulario -->
@@ -40,19 +40,19 @@
                     <div id="imgPerfil"></div>
 
                     <label for="txtCedula">Cédula*</label>
-                    <input required type="number" id="txtCedula" placeholder="Cédula física" max="9999999999">
+                    <input required type="text" id="txtCedula" f placeholder="Cédula física" maxlength="10">
 
                     <label for="txtPrimerNombre">Primer nombre*</label>
                     <input required type="text" id="txtPrimerNombre" placeholder="María">
 
                     <label for="txtSegundoNombre">Segundo nombre</label>
-                    <input required type="text" id="txtSegundoNombre" placeholder="Paula">
+                    <input type="text" id="txtSegundoNombre" placeholder="Paula">
 
                     <label for="txtPrimerApellido">Primer apellido*</label>
                     <input required type="text" id="txtPrimerApellido" placeholder="Morera">
 
                     <label for="txtSegundoApellido">Segundo apellido</label>
-                    <input required type="text" id="txtSegundoApellido" placeholder="Monge">
+                    <input type="text" id="txtSegundoApellido" placeholder="Monge">
 
                     <label for="dateFechaNacimiento">Fecha de nacimiento*</label>
                     <input required type="date" id="dateFechaNacimiento">
@@ -137,6 +137,7 @@
 
     <!-- Controlador usuario -->
     <script src="../js/usuarios/usuarios_controlador.js"></script>
+    
 </body>
 
 </html>

@@ -27,11 +27,13 @@ input, label, select {
     font-family: 'Catamaran', sans-serif;
     color: #505050;
     font-size: 18px;
-}
-input{
-    font-size: 1em;
+    width: 100%;
 }
 
+input{
+    padding-left: 3%;
+    width: 97%;
+}
 button {
     outline: none;
     border: none;
@@ -303,13 +305,12 @@ footer i {
     font-size: 1em;
 }
 
-.text-box-content img {
-    height: 300px;
+.text-box-content img.pinna {
     width: 175px;
     transform: rotate(-30deg);
     position: absolute;
-    bottom: -50px;
-    left: -30px;
+    bottom: -60px;
+    left: -80px;
 }
 
 /* Estilos para los cuadros de texto y los formularios */
@@ -339,7 +340,7 @@ footer i {
 }
 
 form input.errorInput, form select.errorInput {
-    border: 2px solid #ff4455;
+    border: 1px solid #ff4455;
 }
 
 #div_search>div>label {
@@ -392,7 +393,6 @@ form input.errorInput, form select.errorInput {
     outline: none;
     border-collapse: collapse;
     height: 35px;
-    width: 100%;
     background-color: white;
     border-bottom: 1px solid #aaa;
 }
@@ -403,5 +403,8 @@ form input.errorInput, form select.errorInput {
 }
 
 input.errorInput {
-    border: 1px solid #D1254D;
+    height: 34px;
+}
+select.errorInput{
+    height: 35px;
 }

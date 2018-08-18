@@ -29,4 +29,9 @@ router.route('/modificar_hotel')
         hotelesApi.modificar_hotel(req, res);
     });
 
+router.route('/agregar_ranking')
+    .post(function (req, res) {
+        hotelesApi.agregar_ranking(req, res);
+    });
+
 module.exports = router;

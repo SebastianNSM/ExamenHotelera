@@ -20,29 +20,8 @@ function registrar_usuario(paInfoUsuario) {
             contrasenna_usuario: paInfoUsuario[8]
         }
     });
-
     peticion.done(function (response) {
         respuesta = response;
-        if (respuesta.success) {
-            swal({
-                title: 'Registro correcto',
-                text: 'El usuario se registró correctamente',
-                type: 'success',
-                confirmButtonText: 'Entendido'
-            });
-            $('.swal2-confirm').click(function () {
-                window.location.href = "../html/index.html";
-            });
-            limpiarFormulario();
-        } else {
-            swal({
-                title: 'Registro incorrecto',
-                text: 'No se pudo registrar el usuario: ' + respuesta.msg,
-                type: 'error',
-                confirmButtonText: 'Entendido'
-            });
-        }
-
     });
 
     peticion.fail(function (response) {
@@ -50,6 +29,8 @@ function registrar_usuario(paInfoUsuario) {
     });
 
     return respuesta;
+
+
 }
 
 function obtener_usuarios() {
@@ -124,15 +105,15 @@ function eliminar_usuario(pid) {
     return respuesta;
 };
 
-function modificar_usuario(paInfoUsuario){
+function modificar_usuario(paInfoUsuario) {
     let respuesta = '';
     let peticion = $.ajax({
-        url : 'http://localhost:4000/api/modificar_usuario',
-        type : 'post',
-        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType : 'json',
-        async : false,
-        data:{
+        url: 'http://localhost:4000/api/modificar_usuario',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
             foto_usuario: paInfoUsuario[0],
             cedula_usuario: paInfoUsuario[1],
             pNombre_usuario: paInfoUsuario[2],
@@ -143,15 +124,15 @@ function modificar_usuario(paInfoUsuario){
             sexo_usuario: paInfoUsuario[7],
             contrasenna_usuario: paInfoUsuario[8]
         }
-      });
-    
-      peticion.done(function(response){
-       respuesta = response;
-      });
-    
-      peticion.fail(function(response){
-       
-      });
+    });
 
-      return respuesta;
+    peticion.done(function (response) {
+        respuesta = response;
+    });
+
+    peticion.fail(function (response) {
+
+    });
+
+    return respuesta;
 };
