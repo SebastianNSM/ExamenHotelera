@@ -1,0 +1,407 @@
+html {
+    background-color: #fff;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 1em;
+    line-height: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6, a, button {
+    font-family: 'Catamaran', sans-serif;
+    text-decoration: none;
+    color: #2b2a2a;
+}
+
+a {
+    cursor: pointer;
+}
+
+li {
+    line-height: 2.5em;
+}
+
+p, span, a, strong {
+    line-height: 1.5em;
+}
+
+input, label, select {
+    font-family: 'Catamaran', sans-serif;
+    color: #505050;
+    font-size: 18px;
+}
+input{
+    font-size: 1em;
+}
+
+button {
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    background-color: rgba(41, 148, 130, .9);
+    box-shadow: #6BCABA 0px 0px 2px;
+}
+
+button:hover {
+    background-color: rgba(41, 148, 130, .7);
+    box-shadow: none;
+}
+
+.form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-gap: 15px;
+}
+.form label{
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+form h1{
+    font-size: 2em;
+}
+#imgPerfil{
+    width: 150px;
+    height: 150px;
+    background-color: rgb(107, 202, 186,.3);
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+}
+button[name="form-button"]{
+    height: 38px;
+    position: relative;
+    margin: 50px 50px 0px 50px;
+}
+[name="celdaGrid"]{
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos del header */
+
+/* Estilos del header */
+
+/* Estilos del header */
+
+header h1 {
+    font-weight: bolder;
+    font-size: 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 20px;
+    line-height: 1.18;
+    text-align: center;
+}
+
+header h1 {
+    background-color: rgba(204, 204, 204, 0.3);
+}
+
+header h1>a {
+    color: #fff;
+    font-weight: normal;
+    font-size: 1.6em;
+}
+
+header nav {
+    height: 35px;
+    background-color: rgba(219, 219, 219, 0.45);
+    text-align: center;
+    position: relative;
+    display: flow-root;
+    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.3);
+    transition: background-color .4s;
+}
+header nav:hover{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+header nav:hover a{
+    color: #505050;
+}
+header nav:hover .sesion{
+    background-color: #2b2a2a;
+}
+header nav:hover a.sesion{
+    color: white;
+}
+
+header nav a {
+    cursor: pointer;
+    padding: 0px;
+    margin: 0px 25px;
+    color: rgba(255, 255, 255, 1);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 35px;
+    float: left;
+}
+
+header nav a {
+    position: relative;
+    height: 35px;
+}
+
+.menu {
+    z-index: -0.5;
+    background-color: rgba(255, 255, 255, .3);
+    color: #fff;
+    position: absolute;
+    top: 35px;
+    width: 150px;
+}
+
+.menu li {
+    border-bottom: 1px solid rgba(219, 219, 219, 0.7);
+    border-collapse: collapse;
+    transition: background-color 0.2s;
+}
+
+.menu li:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.sesion {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0px 20px;
+    transition: background-color 0.4s;
+    float: right;
+    margin: 0;
+}
+
+.sesion:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Estilos del footer */
+
+/* Estilos del footer */
+
+/* Estilos del footer */
+
+footer {
+    color: white;
+    padding: 3em 0 2em;
+    background: #2b2a2a;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+}
+
+footer a, footer span {
+    color: white;
+    text-decoration: none;
+    font-family: 'Catamaran', sans-serif;
+}
+
+footer h3 {
+    color: #ffffff;
+    font-size: 1.5em;
+    margin-bottom: 1.8em;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+footer i {
+    color: #226582;
+    margin-right: 10px;
+}
+
+.footer-container {
+    width: 75%;
+    display: grid;
+    grid-gap: 15px;
+    height: 304px;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Background image set-up */
+
+.bg-img.palm {
+    background-image: url(../img/cocoseat.jpeg);
+    background-position: center;
+    background-size: cover;
+    height: 900px;
+}
+
+.bg-img.costa {
+    background-image: url(../img/costa.jpeg);
+    background-position: center;
+    background-size: cover;
+    height: auto;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: -1;
+}
+
+.bg-img.bus {
+    background-image: url(../img/bus.jpeg);
+    height: 200px;
+    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.8);
+    background-size: cover;
+}
+.bg-img.footer{
+    background-image: url('../img/try.jpeg');
+    height: 200px;
+    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.8);
+    background-size: cover;
+}
+
+.bg-img {
+    height: 440px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+}
+
+.bg-img.parallax {
+    background-attachment: fixed;
+}
+
+/* Background image set-up */
+
+/* Estilos para los cuadros de texto y los formularios */
+
+.text-box-border {
+    padding: 15px;
+    background-color: white;
+    margin: 5em auto;
+    height: auto;
+    box-shadow: 0 0 3rem 0 rgba(0, 0, 0, .1);
+    width: 50%;
+}
+
+.text-box-border-index h1{
+    background-color: transparent;
+}
+.text-box-content {
+    padding: 50px;
+    color: #2b2a2a;
+    border: 1px solid #6BCABA;
+    height: auto;
+    
+}
+
+.text-box-content h1 {
+    font-size: 2.4em;
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+.text-box-content h2 {
+    font-size: 1.6em;
+    margin-bottom: 1em;
+}
+
+.text-box-content p {
+    font-size: 1em;
+}
+
+.text-box-content img {
+    height: 300px;
+    width: 175px;
+    transform: rotate(-30deg);
+    position: absolute;
+    bottom: -50px;
+    left: -30px;
+}
+
+/* Estilos para los cuadros de texto y los formularios */
+
+.y-align {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.x-align {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.float {
+    display: flow-root;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+form input.errorInput, form select.errorInput {
+    border: 2px solid #ff4455;
+}
+
+#div_search>div>label {
+    color: #226582;
+    font-weight: bold;
+}
+
+/* The popup (background) */
+
+.popup-bg {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* popup Content Box */
+
+.popup-content {
+    width: 40%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: auto;
+}
+
+
+.popup-content h2 {
+    margin-bottom: 1.5em;
+    font-size: 1em;
+}
+
+.popup-content label {
+    margin: 0px auto;
+    margin-bottom: 5px;
+    width: 80%;
+    padding: 0px 20px 0px 0px;
+    display: block;
+    color: rgba(30, 33, 66, 0.8);
+    font-weight: 300;
+}
+
+.popup-content input, input, select {
+    display: block;
+    border: none;
+    outline: none;
+    border-collapse: collapse;
+    height: 35px;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #aaa;
+}
+
+.popup-content select {
+    width: 85%;
+    height: 30px;
+}
+
+input.errorInput {
+    border: 1px solid #D1254D;
+}

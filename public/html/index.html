@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Hoteles Costa Rica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="../css/index-estilos.css">
+    <link rel="stylesheet" href="../css/estandar.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:400|Kanit:100" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="bg-img parallax palm">
+            <h1>
+                <a href="../html/index.html">Hoteles Costa Rica</a>
+            </h1>
+            <nav>
+                <a href="../html/index.html">Inicio</a>
+                <a href="#sct_lugares">Actividades</a>
+                <a href="#sct_footer">Contáctenos</a>
+                <a hidden id="menuHotel">
+                    Hoteles
+                    <div hidden id="optHoteles" class="menu">
+                        <ul>
+                            <li>Registrar hotel</li>
+                            <li>Listar hoteles</li>
+                        </ul>
+                    </div>
+                </a>
+                <a hidden id="menuClientes">
+                    Clientes
+                    <div id="optClientes" class="menu">
+                        <ul>
+                            <li>Registrar cliente</li>
+                            <li>Listar clientes</li>
+                        </ul>
+                    </div>
+                </a>
+                <a href=""></a>
+                <a id="btnIniciar" class="sesion">Iniciar sesión</a>
+                <a hidden id="btnCerrar" class="sesion">Cerrar sesión</a>
+            </nav>
+            <div class="title-break text-box-border-index">
+                <div class="text-box-content">
+                    <h1>Bienvenido a Hoteles Costa Rica</h1>
+                    <h2>¿Quiénes somos?</h2>
+                    <p>
+                        Somos una ayuda para que alcances la relajación que tanto mereces. Te mostramos de una manera muy sencilla los hoteles más
+                        bellos y sus calificaciones que por cierto, han sido establecidas por otros usuarios que ya han experimentado
+                        lo que es utilizar Hoteles Costa Rica.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+        <!-- Me duele hacer esto, pero no hay tiempo -->
+        <section style="height: 400px;"></section>
+        <section id="sct_lugares">
+            <div class="ficha-imagen" id="fichaComodidades">
+                <!-- Esto literal era hacer una clase para agarrar la foto, me parecio perdida de tiempo -->
+                <div style="background-image: url('../img/pexels-photo-338504.jpeg');"></div>
+                <p>Busque la relajación que tanto desea.</p>
+            </div>
+            <div class="ficha-imagen" id="fichaComidas">
+                <div style="background-image: url('../img/drink.jpeg');"></div>
+                <p>Vote por el hotel con mejores comidas</p>
+            </div>
+            <div class="ficha-imagen" id="fichaPlayas">
+                <div style="background-image: url('../img/lentesarena.jpeg');"></div>
+                <p>Disfrute de su vida sin preocupaciones</p>
+            </div>
+        </section>
+        <section id="sct_iniciar_sesion">
+            <div class="popup-bg animate">
+                <!-- Formulario que aparece -->
+                <form class="popup-content text-box-border">
+                    <div class="popup-form text-box-content" id="div_sesion">
+                        <h1>Iniciar sesión</h1>
+                        <input type="text" id="txtCorreo" placeholder="ejemplo.prueba@gmail.com">
+                        <div id="divContrasenna">
+                            <input type="password" id="txtContrasenna" placeholder="Contraseña">
+                            <a type="button" class="fas fa-eye-slash" id="btnVerContrasenna"></a>
+                        </div>
+                        <button type="button" id="btnIngresar" class="x-align">Ingresar</button>
+                        <a id="crearCuenta" href="../html/cuenta-nueva.html">Crea una cuenta nueva.</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Formulario que aparece -->
+            </div>
+        </section>
+    </main>
+    <div class="bg-img bus y-align"></div>
+    <footer id="sct_footer">
+        <div class="footer-container">
+            <div>
+                <h3>Contacto</h3>
+                <ul>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Teléfono: 68765294</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Correo: ssotom@ucenfotec.ac.cr</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>Clientes</h3>
+                <ul>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <a href="../html/hoteles-listar.html">Calificar hoteles</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <a href="../html/hoteles-listar.html">Ubique su hotel en el mapa</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>Hoteles</h3>
+                <ul>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <a href="../html/hoteles-listar.html">Busque hoteles de 5 estrellas</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <a href="../html/hoteles-listar.html">Disfrute de las comodidades</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
+    <script src="../js/controlador_sesion.js"></script>
+
+</body>
+
+</html>

@@ -1,3 +1,13 @@
+let lng = -84.087502;
+let lat = 9.934739;
+
+function setLat(latitud){
+    lat = latitud
+}
+function setLng(longitud){
+    lng = longitud;
+}
+
 function initMap() {
 
     //la posicion por default va a estar encima de costa rica para que el usuario de zoom y posicione
@@ -17,7 +27,7 @@ function initMap() {
 
     //Marker (la posicion del marker es la misma posicion que donde se centra el mapa y hace que el marker sea arrastrable)
     let markerMapa = new google.maps.Marker({
-        position: crCentro,
+        position: new google.maps.LatLng(lat,lng),
         map: mapa,
         draggable: true,
         icon: '../img/palm-tree.png',
