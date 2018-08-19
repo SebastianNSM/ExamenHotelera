@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/mapa_styles.css">
     <link rel="stylesheet" href="../css/estandar.css">
     <link rel="stylesheet" href="../css/lista-estilos.css">
     <!-- Fonts -->
@@ -58,12 +59,8 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Detalles</th>
                         <th>Dirección</th>
-                        <th>Provincia</th>
-                        <th>Cantón</th>
-                        <th>Distrito</th>
-                        <th>Mapa</th>
-                        <th>Contacto</th>
                         <th>Estado</th>
                         <th>Opciones</th>
                     </tr>
@@ -81,6 +78,22 @@
                     </tr>
                 </tbody>
             </table>
+        </section>
+        <section id="sct_detalles" class="popup-bg">
+            <div class="popup-content">
+                <div class="mapa">
+                    <div id="mapa"></div>
+                    <input type="hidden" id="lat" value="9.934739">
+                    <input type="hidden" id="lng" value="-84.087502">
+                    <div id="locationEscrita">
+                    </div>
+                </div>
+                <div class="correo card-contact">
+
+                </div>
+                <div class="tel card-contact">
+
+                </div>
         </section>
     </main>
     <div class="bg-img footer y-align"></div>
@@ -133,6 +146,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
     <script src="../js/usuarios/usuarios_servicio.js"></script>
     <script src="../js/controlador-menu.js"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQSrrB_vyRukFOkul1HqvmyJ0GpPE1Agk&callback=initMap"></script>
 
     <!-- Servicio usuarios -->
     <script src="../js/hoteles/hoteles_servicio.js"></script>

@@ -75,10 +75,11 @@ function obtenerDatos() {
         // Si el nombre del formulario es modificar, busque el usuario.
 
 
-        // limpiarFormulario();
+        limpiarFormulario();
 
         $('.swal2-confirm').click(function () {
             registrar_hotel(infoHotel);
+            window.location.href = "../html/hoteles-listar.html";
         });
     }
 }
@@ -112,13 +113,39 @@ function validarFormulario() {
         }
     }
 
-    // Validacion de correo servicio
-
-    if (regexCorreo.test(sCorreo) == false) {
+    if(regexSoloLetras.test(sNombre) == false){
         bError = true;
-        inputCorreo.classList.add('errorInput');
+        inputNombre.classList.add('errorInput');
+    }else{
+        inputNombre.classList.remove('errorInput');
+    }
+
+    // Validacion de correos
+    if (regexCorreo.test(crrCliente) == false) {
+        bError = true;
+        inputCorreoCliente.classList.add('errorInput');
     } else {
-        inputCorreo.classList.remove('erroInput');
+        inputCorreoCliente.classList.remove('erroInput');
+    }
+    if (regexCorreo.test(crrRes) == false) {
+        bError = true;
+        inputCorreoRes.classList.add('errorInput');
+    } else {
+        inputCorreoRes.classList.remove('erroInput');
+    }
+
+    // Validacion de telefonos
+    if(regexNumeros.test(telCliente) == false){
+        bError = true;
+        inputTelCliente.classList.add('errorInput');
+    }else{
+        inputTelCliente.classList.remove('errorInput');
+    }
+    if(regexNumeros.test(telRes) == false){
+        bError = true;
+        inputTelRes.classList.add('errorInput');
+    }else{
+        inputTelRes.classList.remove('errorInput');
     }
 
     return bError;

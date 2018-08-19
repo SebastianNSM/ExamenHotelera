@@ -1,69 +1,164 @@
-main{
+main {
     padding: 5em 0;
-    
     min-height: 420px;
 }
 
-#sct_lista{
-    width: 80%;
+#sct_lista {
+    width: 95%;
     display: grid;
-    grid-gap: 15px 0px;
+    grid-gap: 0px 0px;
     grid-template-columns: 150px 1fr;
     grid-template-rows: 50px 1fr;
-    grid-template-areas:
-    "busqueda inputBusqueda"
-    "tabla tabla";
+    grid-template-areas: "busqueda inputBusqueda" "tabla tabla";
     margin: 0 auto;
 }
-.busqueda{
+
+.busqueda {
     grid-area: busqueda;
     position: relative;
     background-color: rgba(4, 58, 81, 0.5);
-    box-shadow:inset 0px 0px 0px 100px rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0px 0px 0px 100px rgba(0, 0, 0, 0.35);
     line-height: 50px;
 }
-.busqueda label{
+
+.busqueda label {
     color: white;
 }
-.inputBusqueda{
+
+.inputBusqueda {
     grid-area: inputBusqueda;
 }
-div.inputBusqueda input{
+
+div.inputBusqueda input {
     height: 48px;
     border: none;
     padding-left: 0px 3%;
     width: 97%;
 }
-.grid-tabla{
+
+.grid-tabla {
     grid-area: tabla;
 }
 
-main table{
+main table {
     width: 100%;
     margin: 0px auto;
     border-collapse: collapse;
     box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.3);
 }
-main table thead tr{
+
+main table thead tr {
     background-color: #25627D;
 }
-main table tbody tr:hover{
+
+main table tbody tr:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-main table thead th{
+main table thead th {
     color: white;
     padding: 20px;
     font-size: 1.3em;
 }
-main table tbody{
+
+main table tbody {
     background-color: #fff;
     display: table-row-group;
 }
 
-tbody td{
+tbody td {
     color: #212121;
     border-bottom: 1px solid #999;
-    padding: 16px;
+    padding: 10px;
     font-weight: 700;
+    position: relative;
+}
+
+table td a {
+    color: #25627D;
+    padding: 10px;
+}
+table td a:hover{
+    color: rgb(52, 156, 201);
+}
+
+[name="btnTabla"] {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(23, 106, 144, .7);
+    height: 20px;
+    width: 80px;
+    box-shadow: 0 0 1em 0px rgba(0, 0, 0, .16);
+}
+
+[name="btnTabla"]>span.fas.fa-book {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+[name="btnTabla"]:hover {
+    background-color: rgba(23, 106, 144, .9);
+}
+
+[name="btnTabla"]:hover>span.fas.fa-book {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* The popup (background) */
+
+.popup-bg {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* popup Content Box */
+
+.popup-content {
+    background-color: white;
+    width: 80%;
+    height: 500px;
+    margin: 0px auto;
+    padding: 30px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-areas:
+    "mapa correo tel"
+}
+.mapa{
+    grid-area: mapa;
+    display: grid;
+    font-size: 2em;
+}
+.mapa span{
+    padding-bottom: 10px;
+    border-bottom: solid 1px #21212179;
+}
+.card-contact{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.tel{
+    grid-area: tel;
+}
+.correo{
+    grid-area: correo;
+}
+.popup-content #mapa{
+    width: 350px;
 }
