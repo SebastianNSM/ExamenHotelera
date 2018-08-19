@@ -78,7 +78,8 @@ table td a {
     color: #25627D;
     padding: 10px;
 }
-table td a:hover{
+
+table td a:hover {
     color: rgb(52, 156, 201);
 }
 
@@ -108,7 +109,6 @@ table td a:hover{
     color: rgba(255, 255, 255, 0.4);
 }
 
-
 /* The popup (background) */
 
 .popup-bg {
@@ -124,7 +124,7 @@ table td a:hover{
 
 /* popup Content Box */
 
-.popup-content {
+#sct_detalles .popup-content {
     background-color: white;
     width: 80%;
     height: 500px;
@@ -133,32 +133,128 @@ table td a:hover{
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-
     display: grid;
     grid-template-columns: 1fr 2fr 2fr;
-    grid-template-areas:
-    "mapa correo tel"
+    grid-template-areas: "mapa contacto contacto"
 }
-.mapa{
+
+.mapa {
     grid-area: mapa;
     display: grid;
     font-size: 2em;
 }
-.mapa span{
+
+.contacto {
+    grid-area: contacto;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: .6fr 1fr;
+    position: relative;
+    text-align: center;
+    align-items: center;
+    border: 1px solid #6BCABA;
+    box-shadow: 0 0 3rem 0 rgba(0, 0, 0, .1);
+}
+
+.contacto h1 {
+    font-size: 1.5em;
+}
+
+.mapa span {
     padding-bottom: 10px;
+    font-size: 1.35em;
     border-bottom: solid 1px #21212179;
 }
-.card-contact{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-}
-.tel{
+
+.tel {
     grid-area: tel;
 }
-.correo{
+
+.correo {
     grid-area: correo;
 }
-.popup-content #mapa{
+
+.popup-content #mapa {
     width: 350px;
+}
+
+/* Estilos de las estrellas */
+
+#sct_ranking .popup-content {
+    background-color: white;
+    width: 80%;
+    height: 300px;
+    margin: 0px auto;
+    padding: 30px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50% 50%;
+    grid-gap: 20px;
+}
+#sct_ranking .popup-content label{
+    padding: 0px;
+}
+#sct_ranking div{
+    position: relative;
+    text-align: center;
+}
+
+
+#sct_ranking h1{
+    font-size: 1.6em;
+}
+
+#sct_ranking i{
+    font-size: 3em;
+    color: orange;
+}
+#sct_ranking span{
+    font-size: 4em;
+
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    color: grey;
+}
+
+.clasificacion {
+    padding: 20px 0px;
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, .4);
+    display: inline;
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    left: 0px;
+}
+.clasificacion label{
+    display: inline;
+}
+
+label:hover, label:hover~label {
+    color: orange;
+}
+
+input[type="radio"]:checked~label {
+    color: orange;
+}
+
+#btnCalificar{
+    position: relative;
+    top: 35px;
+    text-align: center;
+    background-color: rgba(23, 106, 144, .7);
+    box-shadow: 0 0 1em 0px rgba(0, 0, 0, .16);
+}
+
+#btnCalificar:hover {
+    background-color: rgba(23, 106, 144, .9);
 }

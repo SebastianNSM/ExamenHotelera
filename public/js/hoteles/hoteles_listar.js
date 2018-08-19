@@ -1,9 +1,21 @@
 'use strict';
 let ppDetalles = document.querySelector('#sct_detalles');
+let ppCalificar = document.querySelector('#sct_ranking');
 let inputLat = document.querySelector('#lat');
 let inputLng = document.querySelector('#lng');
 mostrarHoteles();
 
+function calcularEstrellas() {
+    let arregloSltEstrellas = document.querySelectorAll('input[type="radio"]:checked');
+    let value = 0;
+    for(let i =0;i<arregloSltEstrellas.length;i++){
+        value += Number(arregloSltEstrellas[i].value);
+    }
+    value /= 5;
+    value = Math.trunc(value);
+    console.log(value);
+    return value;
+}
 
 function mostrarHoteles(paBuscar) {
 
@@ -18,17 +30,20 @@ function mostrarHoteles(paBuscar) {
             let fila = tbody.insertRow();
 
             let cNombre = fila.insertCell();
-            let cDetalles = fila.insertCell();
             let cDireccion = fila.insertCell();
+            let cCalificar = fila.insertCell();
+            let cRanking = fila.insertCell();
+            let cDetalles = fila.insertCell();
             let cEstado = fila.insertCell();
             let cOpciones = fila.insertCell();
 
             cNombre.innerHTML = listaHoteles[i]['nombre'];
+            cDireccion.innerHTML = listaHoteles[i]['provincia'] + ', ' + listaHoteles[i]['canton'] + ', ' + listaHoteles[i]['distrito'];
+            cRanking.innerHTML = '';
             cDetalles.innerHTML = '';
-            cDireccion.innerHTML = listaHoteles[i]['direccion'];
             cEstado.innerHTML = listaHoteles[i]['estado'];
 
-            // Boton de ranking
+            // Boton de detalles (mapa, direccion exacta y contacto)
             let btnDetalles = document.createElement('a');
             btnDetalles.name = "btnTabla";
             let libro = document.createElement('span');
@@ -49,27 +64,35 @@ function mostrarHoteles(paBuscar) {
                 // Esto genera la location escrita
                 let locationEscrita = document.querySelector('#locationEscrita');
                 locationEscrita.innerHTML = "";
-                let provincia = document.createElement('span');
-                provincia.innerHTML = listaHoteles[i]['provincia'] + ', ';
-                let canton = document.createElement('span');
-                canton.innerHTML = listaHoteles[i]['canton'] + ', ';
-                let distrito = document.createElement('span');
-                distrito.innerHTML = listaHoteles[i]['distrito'];
-                locationEscrita.appendChild(provincia);
-                locationEscrita.appendChild(canton);
-                locationEscrita.appendChild(distrito);
+                locationEscrita.innerHTML = listaHoteles[i]['direccion'];
 
                 // Esto genera el correo de servicio
-                let correoCard = document.querySelector('.correo.card-contact');
+                let contacto = document.querySelector('.contacto');
+                contacto.innerHTML = '';
+                contacto.appendChild(createH1('Correo de servicio:'));
+                contacto.appendChild(createH1(listaHoteles[i]['correo_servicio']));
+                contacto.appendChild(createH1('Correo para reservaciones:'));
+                contacto.appendChild(createH1(listaHoteles[i]['correo_reservacion']));
+                contacto.appendChild(createH1('Teléfono de servicio:'));
+                contacto.appendChild(createH1(listaHoteles[i]['telefono_servicio']));
+                contacto.appendChild(createH1('Teléfono para reservaciones:'));
+                contacto.appendChild(createH1(listaHoteles[i]['telefono_reservacion']));
 
-                correoCard.appendChild(createH1('Correo servicio:'));
-                correoCard.appendChild(createH1(listaHoteles[i]['correo_servicio']));
             });
-            btnDetalles.addEventListener('click', verRanking);
 
             btnDetalles.appendChild(libro);
             cDetalles.appendChild(btnDetalles);
 
+            // Boton de ranking
+            let btnCalificar = document.createElement('a');
+            btnCalificar.name = "btnTabla";
+
+            btnCalificar.addEventListener('click', function () {
+                ppCalificar.style.display = 'block';
+                let btnCalificar = document.querySelector('#btnCalificar');
+                btnCalificar.addEventListener('click',calcularEstrellas);
+            });
+            cCalificar.appendChild(btnCalificar);
             // BOTON EDITAR
             // BOTON EDITAR
             // BOTON EDITAR
@@ -148,6 +171,9 @@ window.onclick = function (event) {
         ppDetalles.style.display = "none";
         inputLat.value = 0;
         inputLng.value = 0;
+    }
+    if (event.target == ppCalificar) {
+        ppCalificar.style.display = "none";
     }
 }
 
