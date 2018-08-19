@@ -1,41 +1,59 @@
 main{
     padding: 3em 0;
-    background-image: url(../img/page/9BzhU2v.jpg);
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    
     min-height: 420px;
 }
 
 #sct_lista{
-    min-height: 420px;
+    width: 80%;
     display: grid;
-    grid-template-columns: 0.5fr 1fr 4fr;
+    grid-gap: 15px 0px;
+    grid-template-columns: .3fr 1fr;
+    grid-template-rows: 50px 1fr;
     grid-template-areas:
-    ". busqueda tabla";
+    "busqueda inputBusqueda"
+    "tabla tabla";
+    margin: 0 auto;
 }
-.grid-busqueda{
+.busqueda{
     grid-area: busqueda;
     position: relative;
+    background-color: #5E93AA;
+    line-height: 50px;
+}
+.busqueda label{
+    color: white;
+}
+.inputBusqueda{
+    grid-area: inputBusqueda;
+}
+div.inputBusqueda input{
+    height: 48px;
+    border: none;
+    padding-left: 0px 3%;
+    width: 97%;
 }
 .grid-tabla{
     grid-area: tabla;
 }
 
 main table{
+    width: 100%;
     margin: 0px auto;
-    width: 750px;
     border-collapse: collapse;
     box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.3);
-    line-height: 0px;
 }
 main table thead tr{
-    background-color: #fe9126;
+    background-color: #25627D;
 }
+main table tbody tr:hover{
+    background-color: rgba(150, 214, 241, 0.5);
+}
+
 main table thead th{
     color: white;
     padding: 20px;
+    font-size: 1.3em;
 }
 main table tbody{
     background-color: #fff;
@@ -43,87 +61,8 @@ main table tbody{
 }
 
 tbody td{
-    text-align: center;
     color: #212121;
     border-bottom: 1px solid #999;
-    height: 80px;
-    width: 100px;
-    position: relative;
-}
-tbody td img{
-    width: 50px;
-    height: 50px;
-    margin: 20px 0px;
-}
-#div_search{
-    position: relative;
-}
-#div_search div{
-    padding: 20px;
-    height: 400px;
-    width: 250px;
-    background-color:#fff;
-    border: #999 solid 1px;
-    box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.3);
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 3em;
-}
-
-#div_search div label{
-    text-align: center;
-    margin: .5em 0px;
-    font-size: 1.15em;
-    text-transform: uppercase;
-    line-height: 34px;
-}
-#div_search div input{
-    height: 36px;
-    color: #999;
-    height: 32px;
-}
-/* Estilos del tooltip */
-/* Estilos del tooltip */
-/* Estilos del tooltip */
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 50px;
-    background-color: rgba(136, 33, 19,0.9);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-
-    font-size: 0.7em;
-    
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 20%;
-    margin-left: 40px;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}
-
-table tbody td>img{
-    position: absolute;
-    left: 25px;
-}
-
-td>span{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 33px;
+    padding: 16px;
+    font-weight: 700;
 }

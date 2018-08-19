@@ -76,7 +76,7 @@ function obtenerDatos() {
     } else {
         swal({
             title: 'Guardado',
-            text: 'Información de usuario ha sido guardada correctamente',
+            text: 'Información de usuario guardada correctamente',
             type: 'success',
             confirmButtonText: 'Entendido'
         });

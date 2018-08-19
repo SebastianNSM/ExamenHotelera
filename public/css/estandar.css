@@ -5,7 +5,7 @@ html {
     line-height: 1.5em;
 }
 
-h1, h2, h3, h4, h5, h6, a, button {
+h1, h2, h3, h4, h5, h6, a, button,th {
     font-family: 'Catamaran', sans-serif;
     text-decoration: none;
     color: #2b2a2a;

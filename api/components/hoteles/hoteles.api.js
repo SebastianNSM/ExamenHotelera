@@ -15,7 +15,8 @@ module.exports.registrar_hotel = function (req, res) {
         correo_servicio: req.body.correo_servicio,
         telefono_reservacion: req.body.telefono_reservacion,
         correo_reservacion: req.body.correo_reservacion,
-        estrellas_hotel: 0
+        estrellas: 0,
+        estado: "Activo"
     })
 
     nuevoHotel.save(function (error) {
@@ -28,7 +29,7 @@ module.exports.registrar_hotel = function (req, res) {
 };
 
 module.exports.listar_hotel = function (req, res) {
-    hotelModel.find().sort({ nombre_hotel: 'asc' }).then(
+    hotelModel.find().sort({ nombre: 'asc' }).then(
         function (hoteles) {
             res.send(hoteles);
         }

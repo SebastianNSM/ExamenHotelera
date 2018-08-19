@@ -14,11 +14,12 @@ let hotelSchema = new mongoose.Schema({
     correo_servicio: { type: String, required: true },
     telefono_reservacion: { type: String, required: true },
     correo_reservacion: { type: String, required: true },
-    estrellas: { type: Number},
-    rank:[
+    estrellas: { type: Number },
+    estado: { type: String },
+    rank: [
         {
-            usuario_rank: { type: String},
-            promedio_rank: { type: Number}
+            usuario_rank: { type: String },
+            promedio_rank: { type: Number }
         }
     ]
 });

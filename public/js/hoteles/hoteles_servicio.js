@@ -12,14 +12,14 @@ function registrar_hotel(paInfoHotel) {
             nombre: paInfoHotel[0],
             latitud: paInfoHotel[1],
             longitud: paInfoHotel[2],
-            provincia_hotel: paInfoHotel[3],
+            provincia: paInfoHotel[3],
             canton: paInfoHotel[4],
             distrito: paInfoHotel[5],
             direccion: paInfoHotel[6],
             telefono_servicio: paInfoHotel[7],
-            correo_servicio: paInfoHotel[9],
-            correo_reservacion: paInfoHotel[10],
-            correo_servicio: paInfoHotel[11]
+            correo_servicio: paInfoHotel[8],
+            telefono_reservacion: paInfoHotel[9],
+            correo_reservacion: paInfoHotel[10]
         }
     });
     peticion.done(function (response) {
@@ -124,9 +124,9 @@ function modificar_hotel(paInfoHotel) {
             distrito: paInfoHotel[5],
             direccion: paInfoHotel[6],
             telefono_servicio: paInfoHotel[7],
-            correo_servicio: paInfoHotel[9],
-            correo_reservacion: paInfoHotel[10],
-            correo_servicio: paInfoHotel[11]
+            correo_servicio: paInfoHotel[8],
+            telefono_reservacion: paInfoHotel[9],
+            correo_reservacion: paInfoHotel[10]
         }
     });
 
