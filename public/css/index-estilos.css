@@ -1,3 +1,33 @@
+header nav{
+    background-color: rgba(219, 219, 219, 0.45);
+}
+
+header nav:hover{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+header nav:hover a{
+    color: #505050;
+}
+.sesion {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0px 20px;
+    transition: background-color 0.4s;
+    float: right;
+    margin: 0;
+}
+header .sesion:hover{
+    background-color: #2b2a2a;
+}
+.menu {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #505050;
+    position: absolute;
+    top: 35px;
+    width: 150px;
+}
+
+
 input, select{
     margin-bottom: 0px 3em;
 }

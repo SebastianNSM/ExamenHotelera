@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-        <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <title>Hoteles Costa Rica</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/reset.css">
@@ -16,15 +16,34 @@
 
 <body class="bg-img parallax costa">
     <header>
+        <div>
+            <h1>
+                <a href="../html/index.html">Hoteles Costa Rica</a>
+            </h1>
+            <nav>
+                <a href="../html/index.html">Inicio</a>
+                <a hidden id="actividades" href="#sct_lugares">Actividades</a>
+                <a href="#sct_footer">Contáctenos</a>
+                <a hidden id="menuHotel">
+                    Hoteles
+                    <div id="optHoteles" class="menu">
+                        <ul>
 
-        <h1>
-            <a href="index.html">Hoteles Costa Rica</a>
-        </h1>
-        <nav>
-            <a href="../html/index.html">Inicio</a>
-            <a href="../html/hoteles.html">Hoteles</a>
-            <a href="../html/clientes.html">Clientes</a>
-        </nav>
+                        </ul>
+                    </div>
+                </a>
+                <a hidden id="menuClientes">
+                    Clientes
+                    <div id="optClientes" class="menu">
+                        <ul>
+
+                        </ul>
+                    </div>
+                </a>
+                <a id="btnRegistrarse" href="../html/formulario-usuario.html">Registrese</a>
+                <a id="btnIniciar" class="sesion">Iniciar sesión</a>
+                <a hidden id="btnCerrar" class="sesion">Cerrar sesión</a>
+            </nav>
     </header>
     <main>
         <section id="sct_lista">
@@ -112,6 +131,8 @@
 
     <script src="../js/jquery-3.3.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
+    <script src="../js/usuarios/usuarios_servicio.js"></script>
+    <script src="../js/controlador-menu.js"></script>
 
     <!-- Servicio usuarios -->
     <script src="../js/hoteles/hoteles_servicio.js"></script>

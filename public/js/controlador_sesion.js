@@ -3,24 +3,24 @@
 let windowLocation = window.location.href;
 
 // Inicio iniciar sesion
-let inputCorreo = document.querySelector('#txtCorreo');
+let inputCedula = document.querySelector('#txtCedula');
 let inputContrasenna = document.querySelector('#txtContrasenna');
 let botonIngresar = document.querySelector('#btnIngresar');
 botonIngresar.addEventListener('click', obtenerDatosInicio);
 
-let sCorreo = "";
+let sCedula = "";
 let sContrasenna = "";
 
 function obtenerDatosInicio() {
     localStorage.clear();
-    sCorreo = inputCorreo.value;
+    sCedula = inputCedula.value;
     sContrasenna = inputContrasenna.value;
 
     // validar pequenno
-    if (sCorreo == "") {
-        inputCorreo.classList.add('errorInput');
+    if (sCedula == "") {
+        inputCedula.classList.add('errorInput');
     } else {
-        inputCorreo.classList.remove('errorInput');
+        inputCedula.classList.remove('errorInput');
     }
     if (sContrasenna == "") {
         inputContrasenna.classList.add('errorInput');
@@ -30,28 +30,35 @@ function obtenerDatosInicio() {
     // validar pequenno
 
     let bError = false;
-    bError = verificarCredenciales(sCorreo, sContrasenna);
+    bError = verificarCredenciales(sCedula, sContrasenna);
     if (bError) {
         swal({
             title: 'No se pudo iniciar sesión',
-            text: 'Verifique que el correo y la contraseña estén bien escritos',
+            text: 'Verifique que la cédula y la contraseña estén bien escritas',
             type: 'warning',
             confirmButtonText: 'Entendido'
         });
     } else {
-        accionRol(localStorage.getItem('rolUsuario'));
+        popup.style.display = "none";
+        inputContrasenna.value = "";
+        inputCedula.value = "";
+        inputCedula.classList.remove('errorInput');
+        inputContrasenna.classList.remove('errorInput');
+        changeButtons();
+        window.location.reload();
     }
 }
-// ssotom@ucenfotec.ac.cr
-// 121000
-function verificarCredenciales(sCorreo, sContrasenna) {
+
+function verificarCredenciales(sCedula, sContrasenna) {
+
+    let listaUsuarios = obtener_usuarios();
 
     let bError = true;
     for (let i = 0; i < listaUsuarios.length; i++) {
-        if (sCorreo === listaUsuarios[i]['correo_usuario']) {
+        if (sCedula == listaUsuarios[i]['cedula_usuario']) {
             if (sContrasenna == listaUsuarios[i]['contrasenna_usuario']) {
 
-                let nombreCompleto = listaUsuarios[i]['nombre_usuario']+' '+listaUsuarios[i]['primer_apellido_usuario']+' '+listaUsuarios[i]['segundo_apellido_usuario']
+                let nombreCompleto = listaUsuarios[i]['pNombre_usuario']+' '+listaUsuarios[i]['sNombre_usuario']+' '+listaUsuarios[i]['pApellido_usuario']+' '+listaUsuarios[i]['sApellido_usuario'];
                 localStorage.setItem('idUsuario', listaUsuarios[i]['_id']);
                 localStorage.setItem('rolUsuario', listaUsuarios[i]['rol_usuario']);
                 localStorage.setItem('nombreCompletoUsuario', nombreCompleto);
@@ -95,8 +102,8 @@ window.onclick = function (event) {
     if (event.target == popup) {
         popup.style.display = "none";
         inputContrasenna.value = "";
-        inputCorreo.value = "";
-        inputCorreo.classList.remove('errorInput');
+        inputCedula.value = "";
+        inputCedula.classList.remove('errorInput');
         inputContrasenna.classList.remove('errorInput');
     }
 }

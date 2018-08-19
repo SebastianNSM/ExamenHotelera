@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
     
-    <link rel="stylesheet" href="../css/index-estilos.css">
     <link rel="stylesheet" href="../css/estandar.css">
+    <link rel="stylesheet" href="../css/index-estilos.css">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Catamaran:400|Kanit:100" rel="stylesheet">
 </head>
@@ -23,14 +23,13 @@
             </h1>
             <nav>
                 <a href="../html/index.html">Inicio</a>
-                <a href="#sct_lugares">Actividades</a>
+                <a hidden id="actividades" href="#sct_lugares">Actividades</a>
                 <a href="#sct_footer">Contáctenos</a>
                 <a hidden id="menuHotel">
                     Hoteles
-                    <div hidden id="optHoteles" class="menu">
+                    <div id="optHoteles" class="menu">
                         <ul>
-                            <li>Registrar hotel</li>
-                            <li>Listar hoteles</li>
+                            
                         </ul>
                     </div>
                 </a>
@@ -38,12 +37,11 @@
                     Clientes
                     <div id="optClientes" class="menu">
                         <ul>
-                            <li>Registrar cliente</li>
-                            <li>Listar clientes</li>
+                            
                         </ul>
                     </div>
                 </a>
-                <a href=""></a>
+                <a id="btnRegistrarse" href="../html/formulario-usuario.html">Registrese</a>
                 <a id="btnIniciar" class="sesion">Iniciar sesión</a>
                 <a hidden id="btnCerrar" class="sesion">Cerrar sesión</a>
             </nav>
@@ -87,7 +85,7 @@
                 <form class="popup-content text-box-border">
                     <div class="popup-form text-box-content" id="div_sesion">
                         <h1>Iniciar sesión</h1>
-                        <input type="text" id="txtCorreo" placeholder="ejemplo.prueba@gmail.com">
+                        <input type="text" id="txtCedula" placeholder="Cédula física">
                         <div id="divContrasenna">
                             <input type="password" id="txtContrasenna" placeholder="Contraseña">
                             <a type="button" class="fas fa-eye-slash" id="btnVerContrasenna"></a>
@@ -150,7 +148,10 @@
 
     <script src="../js/jquery-3.3.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
+    <script src="../js/usuarios/usuarios_servicio.js"></script>
+
     <script src="../js/controlador_sesion.js"></script>
+    <script src="../js/controlador-menu.js"></script>
 
 </body>
 

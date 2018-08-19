@@ -84,7 +84,23 @@ function obtenerDatos() {
 }
 
 function validarFormulario() {
+
+    let regexSoloLetras = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/;
+    let regexCorreo = /^[a-zA-Z0-9._~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    let regexNumeros = /^[0-9]{8}$/;
+
     let bError = false;
+
+    sNombre = inputNombre.value;
+    sUbicacion = inputUbicacion.value;
+    sProvincia = selectProvincia.value;
+    sCanton = selectCanton.value;
+    sDistrito = selectDistrito.value;
+    telCliente = inputTelCliente.value;
+    crrCliente = inputCorreoCliente.value;
+    telRes = inputTelRes.value;
+    crrRes = inputCorreoRes.value;
+
     let arregloInputs = document.querySelectorAll('input:required, select');
 
     for (let i = 0; i < arregloInputs.length; i++) {
@@ -95,6 +111,16 @@ function validarFormulario() {
             arregloInputs[i].classList.remove('errorInput');
         }
     }
+
+    // Validacion de correo servicio
+
+    if (regexCorreo.test(sCorreo) == false) {
+        bError = true;
+        inputCorreo.classList.add('errorInput');
+    } else {
+        inputCorreo.classList.remove('erroInput');
+    }
+
     return bError;
 }
 

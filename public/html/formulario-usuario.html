@@ -16,15 +16,34 @@
 
 <body class="bg-img parallax costa">
     <header>
+        <div>
+            <h1>
+                <a href="../html/index.html">Hoteles Costa Rica</a>
+            </h1>
+            <nav>
+                <a href="../html/index.html">Inicio</a>
+                <a hidden id="actividades" href="#sct_lugares">Actividades</a>
+                <a href="#sct_footer">Contáctenos</a>
+                <a hidden id="menuHotel">
+                    Hoteles
+                    <div id="optHoteles" class="menu">
+                        <ul>
 
-        <h1>
-            <a href="index.html">Hoteles Costa Rica</a>
-        </h1>
-        <nav>
-            <a href="../html/index.html">Inicio</a>
-            <a href="../html/hoteles.html">Hoteles</a>
-            <a href="../html/clientes.html">Clientes</a>
-        </nav>
+                        </ul>
+                    </div>
+                </a>
+                <a hidden id="menuClientes">
+                    Clientes
+                    <div id="optClientes" class="menu">
+                        <ul>
+
+                        </ul>
+                    </div>
+                </a>
+                <a id="btnRegistrarse" href="../html/formulario-usuario.html">Registrese</a>
+                <a id="btnIniciar" class="sesion">Iniciar sesión</a>
+                <a hidden id="btnCerrar" class="sesion">Cerrar sesión</a>
+            </nav>
     </header>
 
     <main>
@@ -54,6 +73,9 @@
                     <label for="txtSegundoApellido">Segundo apellido</label>
                     <input type="text" id="txtSegundoApellido" placeholder="Monge">
 
+                    <label for="txtCorreo">Correo electrónico*</label>
+                    <input required type="text" id="txtCorreo" placeholder="ejemplo.correo@gmail.com">
+
                     <label for="dateFechaNacimiento">Fecha de nacimiento*</label>
                     <input required type="date" id="dateFechaNacimiento">
 
@@ -66,7 +88,7 @@
                     </select>
 
                     <label for="txtContrasenna">Contraseña*</label>
-                    <input required type="password" id="txtContrasenna">
+                    <input required type="password" id="txtContrasenna" placeholder="Mínimo 6 caracteres">
 
                     <label for="txtConfirmacion">Confirmación de contraseña*</label>
                     <input required type="password" id="txtConfirmacion">
@@ -127,17 +149,17 @@
     <script src="../js/jquery-3.3.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
     <script src="../js/moment-2.22.2.js"></script>
+    <script src="../js/usuarios/usuarios_servicio.js"></script>
+    <script src="../js/controlador-menu.js"></script>
+
     <!-- Cloudinary -->
     <script src='https://cdn.jsdelivr.net/jquery.cloudinary/1.0.18/jquery.cloudinary.js' type='text/javascript'></script>
     <script src="https://widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 
-    <!-- Servicio usuarios -->
-    <script src="../js/usuarios/imagen_usuario_servicio.js"></script>
-    <script src="../js/usuarios/usuarios_servicio.js"></script>
-
     <!-- Controlador usuario -->
+    <script src="../js/usuarios/imagen_usuario_servicio.js"></script>
     <script src="../js/usuarios/usuarios_controlador.js"></script>
-    
+
 </body>
 
 </html>

@@ -22,6 +22,7 @@ let inputPrimerNombre = document.querySelector('#txtPrimerNombre');
 let inputSegundoNombre = document.querySelector('#txtSegundoNombre');
 let inputPrimerApellido = document.querySelector('#txtPrimerApellido');
 let inputSegundoApellido = document.querySelector('#txtSegundoApellido');
+let inputCorreo = document.querySelector('#txtCorreo');
 let inputFechaNacimiento = document.querySelector('#dateFechaNacimiento');
 let inputSexo = document.querySelector('#txtSexo');
 let inputContrasenna = document.querySelector('#txtContrasenna');
@@ -35,6 +36,7 @@ let sPNombre = "";
 let sSNombre = "";
 let sPApellido = "";
 let sSApellido = "";
+let sCorreo = "";
 let dFechaNacimiento = "";
 let sSexo = "";
 let sContrasenna = "";
@@ -59,6 +61,7 @@ function obtenerDatos() {
     } else {
         sSApellido = inputSegundoApellido.value;
     }
+    sCorreo = inputCorreo.value;
     dFechaNacimiento = new Date(inputFechaNacimiento.value);
     sSexo = inputSexo.value;
     sContrasenna = inputContrasenna.value;
@@ -80,19 +83,21 @@ function obtenerDatos() {
             type: 'success',
             confirmButtonText: 'Entendido'
         });
-        paInfoUsuario.push(imgPerfil, sCedula, sPNombre, sSNombre, sPApellido, sSApellido, dFechaNacimiento, sSexo, sContrasenna);
+        paInfoUsuario.push(imgPerfil, sCedula, sPNombre, sSNombre, sPApellido, sSApellido, sCorreo, dFechaNacimiento, sSexo, sContrasenna);
 
-        // Si el nombre del formulario es modificar, busque el usuario.
-
-        registrar_usuario(paInfoUsuario);
         limpiarFormulario();
 
         $('.swal2-confirm').click(function () {
-            if (localStorage.getItem('rolActual') == 'administrador') {
-                window.location = "../html/listar-usuario.html";
-            }
-            else {
 
+            // Si el nombre del formulario es modificar, busque el usuario.
+            if (localStorage.getItem('rolUsuario') == null || localStorage.getItem('rolUsuario') == 'cliente') {
+                registrar_usuario(paInfoUsuario);
+                window.location.href = "../html/index.html";
+            } else {
+                registrar_usuario(paInfoUsuario);
+                limpiarFormulario();
+                // Cambiar esto cuando mi papa registre los usuarios
+                window.location.href = "../html/index.html";
             }
         });
     }
@@ -101,6 +106,9 @@ function obtenerDatos() {
 
 function validarFormulario() {
 
+    let regexSoloLetras = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/;
+    let regexContrasenna = /^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{6,}$/;
+    let regexCorreo = /^[a-zA-Z0-9._~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     let regexNumeros = /^[0-9]{9,10}$/;
 
     let bError = false;
@@ -110,8 +118,24 @@ function validarFormulario() {
     sPApellido = inputPrimerApellido.value;
     sSNombre = inputSegundoNombre.value;
     sSApellido = inputSegundoApellido.value;
+    sCorreo = inputCorreo.value;
     dFechaNacimiento = new Date(inputFechaNacimiento.value);
     sSexo = inputSexo.value;
+    sContrasenna = inputContrasenna.value;
+
+
+    let arregloNombres = [];
+    arregloNombres.push(inputPrimerNombre, inputSegundoNombre, inputPrimerApellido, inputSegundoApellido);
+
+    // Validacion de solo letras para los nombres
+    for (let i = 0; i < arregloNombres.length; i++) {
+        if (regexSoloLetras.test(arregloNombres[i].value) == false && arregloNombres[i].value != "") {
+            bError = true;
+            arregloNombres[i].classList.add('errorInput');
+        } else {
+            arregloNombres[i].classList.remove('errorInput');
+        }
+    }
 
     let arregloInputs = document.querySelectorAll('input:required, select');
 
@@ -124,6 +148,8 @@ function validarFormulario() {
         }
     }
 
+
+    // Validacion de solo numeros para la cedula
     if (regexNumeros.test(sCedula) == false) {
         bError = true;
         inputCedula.classList.add('errorInput');
@@ -131,15 +157,36 @@ function validarFormulario() {
         inputCedula.classList.remove('errorInput');
     }
 
+    if(regexCorreo.test(sCorreo) == false){
+        bError= true;
+        inputCorreo.classList.add('errorInput');
+    }else{
+        inputCorreo.classList.remove('erroInput');
+    }
+
+    // Validacion para la fecha
+    if (dFechaNacimiento.getUTCFullYear() > fechaMaxima.year()) {
+        bError = true;
+        inputFechaNacimiento.classList.add('errorInput');
+    } else {
+        inputFechaNacimiento.classList.remove('errorInput');
+    }
+
+    // validacion contra caracteres especiales
+    if (regexContrasenna.test(sContrasenna) == false) {
+        bError = true;
+        inputContrasenna.classList.add('errorInput');
+    } else {
+        inputContrasenna.classList.remove('errorInput');
+    }
+
     // Validacion de contrasenna con su confirmacion
-    let contrasenna = inputContrasenna.value;
     let confirmacion = inputConfirmacion.value;
-    if (!(contrasenna === confirmacion)) {
+    if (!(sContrasenna === confirmacion)) {
         bError = true;
         inputContrasenna.classList.add('errorInput');
         inputConfirmacion.classList.add('errorInput');
     } else {
-        inputContrasenna.classList.remove('errorInput');
         inputConfirmacion.classList.remove('errorInput');
     }
 
@@ -152,6 +199,7 @@ function limpiarFormulario() {
     inputSegundoNombre.value = "";
     inputPrimerApellido.value = "";
     inputSegundoApellido.value = "";
+    inputCorreo.value = "";
     inputFechaNacimiento.valueAsDate = fechaMaxima.subtract(18, 'years').toDate();
     inputSexo.value = "";
     inputContrasenna.value = "";

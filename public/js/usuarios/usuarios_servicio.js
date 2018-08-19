@@ -15,9 +15,10 @@ function registrar_usuario(paInfoUsuario) {
             sNombre_usuario: paInfoUsuario[3],
             pApellido_usuario: paInfoUsuario[4],
             sApellido_usuario: paInfoUsuario[5],
-            fecha_nacimiento_usuario: paInfoUsuario[6],
-            sexo_usuario: paInfoUsuario[7],
-            contrasenna_usuario: paInfoUsuario[8]
+            correo_usuario: paInfoUsuario[6],
+            fecha_nacimiento_usuario: paInfoUsuario[7],
+            sexo_usuario: paInfoUsuario[8],
+            contrasenna_usuario: paInfoUsuario[9]
         }
     });
     peticion.done(function (response) {

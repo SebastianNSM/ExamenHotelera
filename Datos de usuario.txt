@@ -1,0 +1,11 @@
+Nombre de usuario: Robert Downey
+Rol: administrador
+Cedula: 305270799
+Contrasenna: 121000
+
+Nombre de usuario: Ninna Watson Gordon
+Rol: cliente
+Cedula: 7836291022
+Contrasenna: as345
+
+Hay mas usuarios registrados, pero eso es para que le quede mas facil.

@@ -9,10 +9,11 @@ let usuarioSchema = new mongoose.Schema({
     sNombre_usuario: { type: String },
     pApellido_usuario: { type: String, required: true },
     sApellido_usuario: { type: String },
+    correo_usuario: { type: String, required: true },
     fecha_nacimiento_usuario: { type: Date, required: true },
     sexo_usuario: { type: String, required: true },
     contrasenna_usuario: { type: String, required: true },
-    rol_usuario: { type: String, required: true}
+    rol_usuario: { type: String, required: true }
 });
 
 module.exports = mongoose.model('Usuario', usuarioSchema);

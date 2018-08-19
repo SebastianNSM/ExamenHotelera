@@ -1,5 +1,5 @@
 main{
-    padding: 3em 0;
+    padding: 5em 0;
     
     min-height: 420px;
 }
@@ -8,7 +8,7 @@ main{
     width: 80%;
     display: grid;
     grid-gap: 15px 0px;
-    grid-template-columns: .3fr 1fr;
+    grid-template-columns: 150px 1fr;
     grid-template-rows: 50px 1fr;
     grid-template-areas:
     "busqueda inputBusqueda"
@@ -18,7 +18,8 @@ main{
 .busqueda{
     grid-area: busqueda;
     position: relative;
-    background-color: #5E93AA;
+    background-color: rgba(4, 58, 81, 0.5);
+    box-shadow:inset 0px 0px 0px 100px rgba(0, 0, 0, 0.35);
     line-height: 50px;
 }
 .busqueda label{
@@ -47,7 +48,7 @@ main table thead tr{
     background-color: #25627D;
 }
 main table tbody tr:hover{
-    background-color: rgba(150, 214, 241, 0.5);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 main table thead th{
