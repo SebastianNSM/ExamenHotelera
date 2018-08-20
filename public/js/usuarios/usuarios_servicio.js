@@ -122,9 +122,10 @@ function modificar_usuario(paInfoUsuario) {
             sNombre_usuario: paInfoUsuario[4],
             pApellido_usuario: paInfoUsuario[5],
             sApellido_usuario: paInfoUsuario[6],
-            fecha_nacimiento_usuario: paInfoUsuario[7],
-            sexo_usuario: paInfoUsuario[8],
-            contrasenna_usuario: paInfoUsuario[9]
+            correo_usuario: paInfoUsuario[7],
+            fecha_nacimiento_usuario: paInfoUsuario[8],
+            sexo_usuario: paInfoUsuario[9],
+            contrasenna_usuario: paInfoUsuario[10]
         }
     });
 
