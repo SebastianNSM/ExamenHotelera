@@ -2,6 +2,13 @@
 let rolActual = localStorage.getItem('rolUsuario');
 changeButtons();
 
+
+if (document.querySelector('#btnCancelar') != null) {
+    document.querySelector('#btnCancelar').addEventListener('click', function () {
+        window.location.href = "../html/index.html";
+    });
+}
+
 // Para menu Opciones
 $('#menuHotel').click(function () {
     if ($('#optHoteles').css('display') === 'none') {
@@ -36,13 +43,13 @@ function changeButtons() {
         document.querySelector('#btnIniciar').hidden = false;
         botonCerrar.hidden = true;
     }
-    if(window.location.pathname.includes("index.html")){
+    if (window.location.pathname.includes("index.html")) {
         document.querySelector('#actividades').hidden = false;
-    }else{
+    } else {
         document.querySelector('#actividades').hidden = true;
     }
 
-    if (window.location.pathname.includes("formulario-usuario.html")){
+    if (window.location.pathname.includes("formulario-usuario.html")) {
         document.querySelector('#btnRegistrarse').hidden = true;
         document.querySelector('.sesion').hidden = true;
     }

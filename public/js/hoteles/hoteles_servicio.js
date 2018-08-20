@@ -119,7 +119,7 @@ function modificar_hotel(paInfoHotel) {
             nombre: paInfoHotel[0],
             latitud: paInfoHotel[1],
             longitud: paInfoHotel[2],
-            provincia_hotel: paInfoHotel[3],
+            provincia: paInfoHotel[3],
             canton: paInfoHotel[4],
             distrito: paInfoHotel[5],
             direccion: paInfoHotel[6],
@@ -141,7 +141,7 @@ function modificar_hotel(paInfoHotel) {
     return respuesta;
 };
 
-function registrar_ranking(_id,id_usuario,promedio_rank) {
+function registrar_ranking(_id,promedio_rank) {
     let respuesta = '';
     let peticion = $.ajax({
         url: 'http://localhost:4000/api/agregar_ranking',
@@ -150,8 +150,7 @@ function registrar_ranking(_id,id_usuario,promedio_rank) {
         dataType: 'json',
         async: false,
         data: {
-            _id: id,
-            usuario_rank: id_usuario,
+            _id: _id,
             promedio_rank: promedio_rank
         }
     });
@@ -165,4 +164,78 @@ function registrar_ranking(_id,id_usuario,promedio_rank) {
     });
 
     return respuesta;
+};
+function actualizarRanking(pid,estrellas){
+    let respuesta = '';
+    let peticion = $.ajax({
+        url : 'http://localhost:4000/api/modificar_hotel',
+        type : 'post',
+        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType : 'json',
+        async : false,
+        data:{
+            _id: pid,
+            estrellas : estrellas
+        }
+      });
+    
+      peticion.done(function(response){
+       respuesta = response;
+      });
+    
+      peticion.fail(function(response){
+       
+      });
+
+      return respuesta;
+};
+
+function activar_hotel(pid){
+    let respuesta = '';
+    let peticion = $.ajax({
+        url : 'http://localhost:4000/api/modificar_hotel',
+        type : 'post',
+        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType : 'json',
+        async : false,
+        data:{
+            _id: pid,
+            estado: "Activo"
+        }
+      });
+    
+      peticion.done(function(response){
+       respuesta = response;
+      });
+    
+      peticion.fail(function(response){
+       
+      });
+
+      return respuesta;
+};
+
+function inactivar_hotel(pid){
+    let respuesta = '';
+    let peticion = $.ajax({
+        url : 'http://localhost:4000/api/modificar_hotel',
+        type : 'post',
+        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType : 'json',
+        async : false,
+        data:{
+            _id: pid,
+            estado: "Inactivo"
+        }
+      });
+    
+      peticion.done(function(response){
+       respuesta = response;
+      });
+    
+      peticion.fail(function(response){
+       
+      });
+
+      return respuesta;
 };

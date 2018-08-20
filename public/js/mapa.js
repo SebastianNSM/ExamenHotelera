@@ -23,5 +23,7 @@ function initMap() {
     google.maps.event.addListener(markerMapa, 'dragend', function () {
         latitudHotel = markerMapa.getPosition().lat();
         longitudHotel = markerMapa.getPosition().lng();
+        localStorage.setItem('latitudHotel',latitudHotel);
+        localStorage.setItem('longitudHotel',longitudHotel);
     });
 }

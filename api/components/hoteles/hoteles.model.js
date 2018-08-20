@@ -18,7 +18,6 @@ let hotelSchema = new mongoose.Schema({
     estado: { type: String },
     rank: [
         {
-            usuario_rank: { type: String },
             promedio_rank: { type: Number }
         }
     ]

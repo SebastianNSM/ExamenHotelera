@@ -3,12 +3,6 @@
 let botonGuardar = document.querySelector('#btnGuardar');
 botonGuardar.addEventListener('click', obtenerDatos);
 
-let botonCancelar = document.querySelector('#btnCancelar');
-botonCancelar.addEventListener('click', function () {
-    window.location = "../html/index.html";
-    limpiarFormulario();
-});
-
 let form = document.querySelector('div.text-box-content');
 // form.name = modificar
 if (form.name == 'modificar') {
@@ -70,15 +64,12 @@ function obtenerDatos() {
             type: 'success',
             confirmButtonText: 'Entendido'
         });
-        infoHotel.push(sNombre, lat, lng, sProvincia, sCanton, sDistrito, sUbicacion, telCliente, crrCliente, telRes, crrRes);
-
         // Si el nombre del formulario es modificar, busque el usuario.
 
-
-        limpiarFormulario();
-
         $('.swal2-confirm').click(function () {
+            infoHotel.push(sNombre, lat, lng, sProvincia, sCanton, sDistrito, sUbicacion, telCliente, crrCliente, telRes, crrRes);
             registrar_hotel(infoHotel);
+            // limpiarFormulario();
             window.location.href = "../html/hoteles-listar.html";
         });
     }

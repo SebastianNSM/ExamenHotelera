@@ -1,32 +1,63 @@
 'use strict';
 let ppDetalles = document.querySelector('#sct_detalles');
 let ppCalificar = document.querySelector('#sct_ranking');
+let inputBuscar = document.querySelector('#txtBuscar');
 let inputLat = document.querySelector('#lat');
 let inputLng = document.querySelector('#lng');
+let hoteles = obtener_hoteles();
+
 mostrarHoteles();
 
-function calcularEstrellas() {
+inputBuscar.addEventListener('keyup', function () {
+    let busqueda = inputBuscar.value;
+    mostrarHoteles(busqueda);
+});
+
+function calcularEstrellasUsuario() {
     let arregloSltEstrellas = document.querySelectorAll('input[type="radio"]:checked');
     let value = 0;
-    for(let i =0;i<arregloSltEstrellas.length;i++){
+    for (let i = 0; i < arregloSltEstrellas.length; i++) {
         value += Number(arregloSltEstrellas[i].value);
     }
     value /= 5;
     value = Math.trunc(value);
-    console.log(value);
     return value;
+}
+
+function calcularEstrellasTotalesHotel(_id) {
+    let hotel = buscar_hotel(_id);
+    let estrellas = 0;
+    for (let i = 0; i < hotel['rank'].length; i++) {
+        estrellas += hotel['rank'][i]['promedio_rank'];
+    }
+    estrellas = estrellas / hotel['rank'].length;
+    return estrellas;
+}
+
+function mostrarEstrellas(cantEstrellas, parent) {
+    for (let i = 0; i < cantEstrellas; i++) {
+        let estrella = document.createElement('span');
+        estrella.classList.add('fas');
+        estrella.classList.add('fa-star');
+        parent.appendChild(estrella);
+    }
 }
 
 function mostrarHoteles(paBuscar) {
 
+    let listaHoteles = hoteles;
+
     if (!paBuscar) {
         paBuscar = '';
     }
-    let listaHoteles = obtener_hoteles();
+
     let tbody = document.querySelector('table tbody');
     tbody.innerHTML = '';
     for (let i = 0; i < listaHoteles.length; i++) {
-        if (listaHoteles[i]['nombre'].toLowerCase().includes(paBuscar.toLowerCase())) {
+        if (listaHoteles[i]['nombre'].toLowerCase().includes(paBuscar.toLowerCase()) ||
+            listaHoteles[i]['provincia'].toLowerCase().includes(paBuscar.toLowerCase()) ||
+            listaHoteles[i]['canton'].toLowerCase().includes(paBuscar.toLowerCase()) ||
+            listaHoteles[i]['distrito'].toLowerCase().includes(paBuscar.toLowerCase())) {
             let fila = tbody.insertRow();
 
             let cNombre = fila.insertCell();
@@ -39,7 +70,12 @@ function mostrarHoteles(paBuscar) {
 
             cNombre.innerHTML = listaHoteles[i]['nombre'];
             cDireccion.innerHTML = listaHoteles[i]['provincia'] + ', ' + listaHoteles[i]['canton'] + ', ' + listaHoteles[i]['distrito'];
-            cRanking.innerHTML = '';
+            if (listaHoteles[i]['estrellas'] == 0) {
+                cRanking.innerHTML = '-';
+            } else {
+                mostrarEstrellas(listaHoteles[i]['estrellas'], cRanking);
+            }
+
             cDetalles.innerHTML = '';
             cEstado.innerHTML = listaHoteles[i]['estado'];
 
@@ -86,12 +122,23 @@ function mostrarHoteles(paBuscar) {
             // Boton de ranking
             let btnCalificar = document.createElement('a');
             btnCalificar.name = "btnTabla";
+            let sello = document.createElement('span');
+            sello.classList.add('fas');
+            sello.classList.add('fa-certificate');
 
             btnCalificar.addEventListener('click', function () {
                 ppCalificar.style.display = 'block';
-                let btnCalificar = document.querySelector('#btnCalificar');
-                btnCalificar.addEventListener('click',calcularEstrellas);
+                let guardarCalif = document.querySelector('#btnCalificar');
+                guardarCalif.addEventListener('click', function () {
+                    let estrellasUsuario = calcularEstrellasUsuario();
+                    registrar_ranking(listaHoteles[i]['_id'], estrellasUsuario);
+
+                    let estrellasTotales = calcularEstrellasTotalesHotel(listaHoteles[i]['_id'])
+                    actualizarRanking(listaHoteles[i]['_id'], estrellasTotales);
+                    window.location.reload();
+                });
             });
+            btnCalificar.appendChild(sello);
             cCalificar.appendChild(btnCalificar);
             // BOTON EDITAR
             // BOTON EDITAR
@@ -119,7 +166,19 @@ function mostrarHoteles(paBuscar) {
 
             // Se guarda en el localStorage lat y lng.
             btnActivar.addEventListener('click', function () {
-
+                swal({
+                    title: '¿Seguro que desea activar este hotel?',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si'
+                }).then((result) => {
+                    if (result.value) {
+                        activar_hotel(this.id);
+                        window.location.reload();
+                    }
+                });
             });
 
             // BOTON INACTIVAR
@@ -134,7 +193,19 @@ function mostrarHoteles(paBuscar) {
 
             // Se guarda en el localStorage lat y lng.
             btnInactivar.addEventListener('click', function () {
-
+                swal({
+                    title: '¿Seguro que desea inactivar este hotel?',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si'
+                }).then((result) => {
+                    if (result.value) {
+                        inactivar_hotel(this.id);
+                        window.location.reload();
+                    }
+                });
             });
 
             // BOTON BORRAR
@@ -149,7 +220,19 @@ function mostrarHoteles(paBuscar) {
 
             // Se guarda en el localStorage lat y lng.
             btnBorrar.addEventListener('click', function () {
-
+                swal({
+                    title: '¿Seguro que desea eliminar este hotel?',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si'
+                }).then((result) => {
+                    if (result.value) {
+                        eliminar_hotel(this.id);
+                        window.location.reload();
+                    }
+                });
             });
 
             cOpciones.appendChild(btnActivar);
