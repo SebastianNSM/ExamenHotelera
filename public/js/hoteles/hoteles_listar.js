@@ -254,14 +254,7 @@ function mostrarHoteles(paBuscar) {
                 cOpciones.appendChild(btnEditar);
                 cOpciones.appendChild(btnBorrar);
             }
-        } else {
-            table.style.display = "none";
-            text.hidden = false;
-
-            inputBuscar.addEventListener('keyup', function () {
-                mostrarHoteles();
-            });
-        }
+        } 
     };
 };
 

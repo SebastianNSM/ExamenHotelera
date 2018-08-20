@@ -50,7 +50,6 @@ if (localStorage.getItem('btnPrevio') == 'editar') {
     inputSexo.value = infoUsuario['sexo_usuario'];
 
     // quitar el input para contrasennas
-
 }
 
 
@@ -96,15 +95,12 @@ function obtenerDatos() {
             type: 'success',
             confirmButtonText: 'Entendido'
         });
-        paInfoUsuario.push( sCedula, sPNombre, sSNombre, sPApellido, sSApellido, sCorreo, dFechaNacimiento, sSexo, sContrasenna);
-
-        limpiarFormulario();
+        paInfoUsuario.push(imgPerfil, sCedula, sPNombre, sSNombre, sPApellido, sSApellido, sCorreo, dFechaNacimiento, sSexo, sContrasenna);
 
         $('.swal2-confirm').click(function () {
 
             // Si el nombre del formulario es modificar, busque el usuario.
             if (localStorage.getItem('rolUsuario') == null || localStorage.getItem('rolUsuario') == 'cliente') {
-                paInfoUsuario.unshift(imgPerfil);
                 registrar_usuario(paInfoUsuario);
                 window.location.href = "../html/index.html";
             } else {
@@ -112,7 +108,7 @@ function obtenerDatos() {
                     paInfoUsuario.unshift(localStorage.getItem('idUsuario'));
                     modificar_usuario(paInfoUsuario);
                 }else{
-                    registrar_hotel(infoHotel);
+                    registrar_usuario(infoHotel);
                 }
                 window.location.href = "../html/listar-usuario.html";
             }

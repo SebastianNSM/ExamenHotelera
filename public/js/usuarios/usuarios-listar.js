@@ -113,9 +113,6 @@ function mostrarUsuarios(paBuscar) {
                 cOpciones.appendChild(btnBorrar);
             }
 
-        } else {
-            table.style.display = "none";
-            text.hidden = false;
         }
     }
 };
