@@ -1,38 +1,133 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
-
-    <style>
-        html {
-            font-family: sans-serif;
-        }
-
-        #foto {
-            background-image: url('http://res.cloudinary.com/sebastiansm/image/upload/Benvenue.jpg');
-            background-position: center;
-            background-size: contain;
-            background-repeat: no-repeat;
-            height: 281.5px;
-            box-shadow: 0 0 3rem 0 rgba(0, 0, 0, .2);
-            width: 500px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            border-bottom: 2px solid rgba(37, 111, 91, 0.7);
-            padding: 15px 0 15px 0;
-            text-align: center;
-            color: rgba(37, 111, 91, 0.7);
-            font-size: 1.5em;
-        }
-    </style>
+    <meta charset="utf-8" />
+    <title>Hoteles Costa Rica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/mapa_styles.css">
+    <link rel="stylesheet" href="../css/estandar.css">
+    <link rel="stylesheet" href="../css/lista-estilos.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:400|Kanit:100" rel="stylesheet">
 </head>
 
-<body>
-    <h1>Bienvenido ${nuevoUsuario.pNombre_usuario} ${nuevoUsuario.sNombre_usuario} ${nuevoUsuario.pApellido_usuario} ${nuevoUsuario.sApellido_usuario}</h1>
-    <p>Ahora podrá acceder a las funcionalidades de nuestro sitio.</p>
+<body class="bg-img parallax costa">
+    <header>
+        <div>
+            <h1>
+                <a href="../html/index.html">Hoteles Costa Rica</a>
+            </h1>
+            <nav>
+                <a href="../html/index.html">Inicio</a>
+                <a hidden id="actividades" href="#sct_lugares">Actividades</a>
+                <a href="#sct_footer">Contáctenos</a>
+                <a hidden id="menuHotel">
+                    Hoteles
+                    <div id="optHoteles" class="menu">
+                        <ul>
 
-    <div id="foto"></div>
+                        </ul>
+                    </div>
+                </a>
+                <a hidden id="menuClientes">
+                    Clientes
+                    <div id="optClientes" class="menu">
+                        <ul>
+
+                        </ul>
+                    </div>
+                </a>
+                <a id="btnRegistrarse" href="../html/formulario-usuario.html">Registrese</a>
+                <a id="btnIniciar" class="sesion">Iniciar sesión</a>
+                <a hidden id="btnCerrar" class="sesion">Cerrar sesión</a>
+            </nav>
+    </header>
+    <main>
+        <section id="sct_lista">
+            <div class="busqueda">
+                <label for="txtBuscar">Buscar hotel: </label>
+            </div>
+            <div class="inputBusqueda">
+                <input type="text" id="txtBuscar">
+            </div>
+
+            <table id="tblHoteles" class="grid-tabla">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nombre completo</th>
+                        <th>Cédula</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Sexo</th>
+                        <th id="cOpcionesTh" hidden>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <p id="noMatch" hidden>En este momento no se encuentran usuarios que cumplan con esas características</p>
+    </main>
+    <div class="bg-img footer y-align"></div>
+    <footer id="sct_footer">
+        <div class="footer-container">
+            <div>
+                <h3>Contacto</h3>
+                <ul>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Teléfono: 68765294</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Correo: ssotom@ucenfotec.ac.cr</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>Clientes</h3>
+                <ul>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <a href="../html/hoteles-listar.html">Calificar hoteles</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <a href="../html/hoteles-listar.html">Ubique su hotel en el mapa</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>Hoteles</h3>
+                <ul>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <a href="../html/hoteles-listar.html">Busque hoteles de 5 estrellas</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <a href="../html/hoteles-listar.html">Disfrute de las comodidades</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
+    <script src="../js/usuarios/usuarios_servicio.js"></script>
+    <script src="../js/controlador-menu.js"></script>
+
+    <script src="../js/usuarios/usuarios-listar.js"></script>
+
 
 </body>
 

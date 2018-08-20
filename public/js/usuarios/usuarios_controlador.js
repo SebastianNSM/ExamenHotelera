@@ -9,14 +9,8 @@ botonCancelar.addEventListener('click', function () {
     limpiarFormulario();
 });
 
-let form = document.querySelector('div.text-box-content');
-// form.name = modificar
-if (form.name == 'modificar') {
-    inputCedula.disabled = true;
-    inputConfirmacion.hidden = true;
-}
-
 let imgPerfil = getImgUrl(getImgID());
+let fotoPerfil = document.querySelector('#imgPerfil');
 let inputCedula = document.querySelector('#txtCedula');
 let inputPrimerNombre = document.querySelector('#txtPrimerNombre');
 let inputSegundoNombre = document.querySelector('#txtSegundoNombre');
@@ -40,6 +34,25 @@ let sCorreo = "";
 let dFechaNacimiento = "";
 let sSexo = "";
 let sContrasenna = "";
+
+if (localStorage.getItem('btnPrevio') == 'editar') {
+    let infoUsuario = buscar_usuario(localStorage.getItem('idUsuario'));
+
+    fotoPerfil.style.backgroundImage = 'url('+getImgUrl(infoUsuario['foto_usuario']) +')';
+    
+    inputCedula.value = infoUsuario['cedula_usuario'];
+    inputPrimerNombre.value = infoUsuario['pNombre_usuario'];
+    inputSegundoNombre.value = infoUsuario['sNombre_usuario'];
+    inputPrimerApellido.value = infoUsuario['pApellido_usuario'];
+    inputSegundoApellido.value = infoUsuario['sApellido_usuario'];
+    inputCorreo.value = infoUsuario['correo_usuario'];
+    inputFechaNacimiento.valueAsDate = new Date(infoUsuario['fecha_nacimiento_usuario']);
+    inputSexo.value = infoUsuario['sexo_usuario'];
+
+    // quitar el input para contrasennas
+
+}
+
 
 function obtenerDatos() {
 
@@ -83,7 +96,7 @@ function obtenerDatos() {
             type: 'success',
             confirmButtonText: 'Entendido'
         });
-        paInfoUsuario.push(imgPerfil, sCedula, sPNombre, sSNombre, sPApellido, sSApellido, sCorreo, dFechaNacimiento, sSexo, sContrasenna);
+        paInfoUsuario.push( sCedula, sPNombre, sSNombre, sPApellido, sSApellido, sCorreo, dFechaNacimiento, sSexo, sContrasenna);
 
         limpiarFormulario();
 
@@ -91,13 +104,17 @@ function obtenerDatos() {
 
             // Si el nombre del formulario es modificar, busque el usuario.
             if (localStorage.getItem('rolUsuario') == null || localStorage.getItem('rolUsuario') == 'cliente') {
+                paInfoUsuario.unshift(imgPerfil);
                 registrar_usuario(paInfoUsuario);
                 window.location.href = "../html/index.html";
             } else {
-                registrar_usuario(paInfoUsuario);
-                limpiarFormulario();
-                // Cambiar esto cuando mi papa registre los usuarios
-                window.location.href = "../html/index.html";
+                if (localStorage.getItem('btnPrevio') == 'editar') {
+                    paInfoUsuario.unshift(localStorage.getItem('idUsuario'));
+                    modificar_usuario(paInfoUsuario);
+                }else{
+                    registrar_hotel(infoHotel);
+                }
+                window.location.href = "../html/listar-usuario.html";
             }
         });
     }

@@ -74,9 +74,20 @@ tbody td {
     position: relative;
 }
 
+table tbody tr td img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgb(52, 156, 201);
+    padding: 0.5px;
+}
+
 table td a {
     color: #25627D;
     padding: 10px;
+}
+
+table tbody tr {
+    height: 60px;
 }
 
 table td a:hover {
@@ -95,6 +106,15 @@ table td a:hover {
     box-shadow: 0 0 1em 0px rgba(0, 0, 0, .16);
 }
 
+#noMatch{
+    width: 80%;
+    font-size: 3em;
+    margin: 0 auto;
+    margin-top: 3em;
+    background-color: #fff;
+    padding: 15px;
+}
+
 [name="btnTabla"]>span.fas {
     position: absolute;
     left: 50%;
@@ -108,7 +128,8 @@ table td a:hover {
 [name="btnTabla"]:hover>span.fas {
     color: rgba(255, 255, 255, 0.4);
 }
-span.fas.fa-star{
+
+span.fas.fa-star {
     color: orange;
     padding: 5px;
 }
@@ -198,26 +219,27 @@ span.fas.fa-star{
     grid-template-rows: 50% 50%;
     grid-gap: 20px;
 }
-#sct_ranking .popup-content label{
+
+#sct_ranking .popup-content label {
     padding: 0px;
 }
-#sct_ranking div{
+
+#sct_ranking div {
     position: relative;
     text-align: center;
 }
 
-
-#sct_ranking h1{
+#sct_ranking h1 {
     font-size: 1.6em;
 }
 
-#sct_ranking i{
+#sct_ranking i {
     font-size: 3em;
     color: orange;
 }
-#sct_ranking span{
-    font-size: 4em;
 
+#sct_ranking span {
+    font-size: 4em;
 }
 
 input[type="radio"] {
@@ -239,7 +261,8 @@ label {
     bottom: 20px;
     left: 0px;
 }
-.clasificacion label{
+
+.clasificacion label {
     display: inline;
 }
 
@@ -251,7 +274,7 @@ input[type="radio"]:checked~label {
     color: orange;
 }
 
-#btnCalificar{
+#btnCalificar {
     position: relative;
     top: 35px;
     text-align: center;

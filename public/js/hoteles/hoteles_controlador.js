@@ -1,14 +1,7 @@
 'use strict';
 
 let botonGuardar = document.querySelector('#btnGuardar');
-botonGuardar.addEventListener('click', obtenerDatos);
-
-let form = document.querySelector('div.text-box-content');
-// form.name = modificar
-if (form.name == 'modificar') {
-    inputCedula.disabled = true;
-    inputConfirmacion.hidden = true;
-}
+botonGuardar.addEventListener('click',obtenerDatos);
 
 let inputNombre = document.querySelector('#txtNombre');
 let inputUbicacion = document.querySelector('#txtUbicacionEscrita');
@@ -30,6 +23,41 @@ let crrCliente = "";
 let telRes = "";
 let crrRes = "";
 
+if (localStorage.getItem('btnPrevio') == 'editar') {
+    let infoHotel = buscar_hotel(localStorage.getItem('idHotel'));
+
+    // Sets the map to the saves position
+    let inputLat = document.querySelector('#lat');
+    let inputLng = document.querySelector('#lng');
+    inputLat.value = infoHotel['latitud'];
+    inputLng.value = infoHotel['longitud'];
+
+    inputNombre.value = infoHotel['nombre'];
+    inputUbicacion.value = infoHotel['direccion'];
+
+    if (selectProvincia.value === "San José" || selectProvincia.value == "") {
+        buscarIndex(selectProvincia, infoHotel['provincia']);
+    }
+    if (selectCanton.value == "") {
+        buscarIndex(selectCanton, infoHotel['canton']);
+    }
+    if (selectDistrito.value == "") {
+        buscarIndex(selectDistrito, infoHotel['distrito']);
+    }
+    inputTelCliente.value = infoHotel['telefono_servicio'];
+    inputCorreoCliente.value = infoHotel['correo_servicio'];
+    inputTelRes.value = infoHotel['telefono_reservacion'];
+    inputCorreoRes.value = infoHotel['correo_reservacion'];
+}
+
+function buscarIndex(select, compare) {
+    for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].value === compare) {
+            $('select option:eq('+i+')').prop('selected', true);
+        }
+    }
+
+}
 
 function obtenerDatos() {
 
@@ -68,7 +96,14 @@ function obtenerDatos() {
 
         $('.swal2-confirm').click(function () {
             infoHotel.push(sNombre, lat, lng, sProvincia, sCanton, sDistrito, sUbicacion, telCliente, crrCliente, telRes, crrRes);
-            registrar_hotel(infoHotel);
+            if (localStorage.getItem('btnPrevio') == 'editar') {
+                infoHotel.unshift(localStorage.getItem('idHotel'));
+                modificar_hotel(infoHotel);
+            }else{
+                registrar_hotel(infoHotel);
+            }
+            
+            
             // limpiarFormulario();
             window.location.href = "../html/hoteles-listar.html";
         });
@@ -104,10 +139,10 @@ function validarFormulario() {
         }
     }
 
-    if(regexSoloLetras.test(sNombre) == false){
+    if (regexSoloLetras.test(sNombre) == false) {
         bError = true;
         inputNombre.classList.add('errorInput');
-    }else{
+    } else {
         inputNombre.classList.remove('errorInput');
     }
 
@@ -126,16 +161,16 @@ function validarFormulario() {
     }
 
     // Validacion de telefonos
-    if(regexNumeros.test(telCliente) == false){
+    if (regexNumeros.test(telCliente) == false) {
         bError = true;
         inputTelCliente.classList.add('errorInput');
-    }else{
+    } else {
         inputTelCliente.classList.remove('errorInput');
     }
-    if(regexNumeros.test(telRes) == false){
+    if (regexNumeros.test(telRes) == false) {
         bError = true;
         inputTelRes.classList.add('errorInput');
-    }else{
+    } else {
         inputTelRes.classList.remove('errorInput');
     }
 

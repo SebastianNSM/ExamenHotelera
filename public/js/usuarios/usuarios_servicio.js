@@ -115,15 +115,16 @@ function modificar_usuario(paInfoUsuario) {
         dataType: 'json',
         async: false,
         data: {
-            foto_usuario: paInfoUsuario[0],
-            cedula_usuario: paInfoUsuario[1],
-            pNombre_usuario: paInfoUsuario[2],
-            sNombre_usuario: paInfoUsuario[3],
-            pApellido_usuario: paInfoUsuario[4],
-            sApellido_usuario: paInfoUsuario[5],
-            fecha_nacimiento_usuario: paInfoUsuario[6],
-            sexo_usuario: paInfoUsuario[7],
-            contrasenna_usuario: paInfoUsuario[8]
+            _id: paInfoUsuario[0],
+            foto_usuario: paInfoUsuario[1],
+            cedula_usuario: paInfoUsuario[2],
+            pNombre_usuario: paInfoUsuario[3],
+            sNombre_usuario: paInfoUsuario[4],
+            pApellido_usuario: paInfoUsuario[5],
+            sApellido_usuario: paInfoUsuario[6],
+            fecha_nacimiento_usuario: paInfoUsuario[7],
+            sexo_usuario: paInfoUsuario[8],
+            contrasenna_usuario: paInfoUsuario[9]
         }
     });
 

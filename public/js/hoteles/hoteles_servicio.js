@@ -116,17 +116,18 @@ function modificar_hotel(paInfoHotel) {
         dataType: 'json',
         async: false,
         data: {
-            nombre: paInfoHotel[0],
-            latitud: paInfoHotel[1],
-            longitud: paInfoHotel[2],
-            provincia: paInfoHotel[3],
-            canton: paInfoHotel[4],
-            distrito: paInfoHotel[5],
-            direccion: paInfoHotel[6],
-            telefono_servicio: paInfoHotel[7],
-            correo_servicio: paInfoHotel[8],
-            telefono_reservacion: paInfoHotel[9],
-            correo_reservacion: paInfoHotel[10]
+            _id: paInfoHotel[0],
+            nombre: paInfoHotel[1],
+            latitud: paInfoHotel[2],
+            longitud: paInfoHotel[3],
+            provincia: paInfoHotel[4],
+            canton: paInfoHotel[5],
+            distrito: paInfoHotel[6],
+            direccion: paInfoHotel[7],
+            telefono_servicio: paInfoHotel[8],
+            correo_servicio: paInfoHotel[9],
+            telefono_reservacion: paInfoHotel[10],
+            correo_reservacion: paInfoHotel[11]
         }
     });
 

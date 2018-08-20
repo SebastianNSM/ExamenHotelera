@@ -5,6 +5,8 @@ let inputBuscar = document.querySelector('#txtBuscar');
 let inputLat = document.querySelector('#lat');
 let inputLng = document.querySelector('#lng');
 let hoteles = obtener_hoteles();
+localStorage.removeItem('btnPrevio');
+localStorage.removeItem('idHotel');
 
 mostrarHoteles();
 
@@ -46,6 +48,11 @@ function mostrarEstrellas(cantEstrellas, parent) {
 function mostrarHoteles(paBuscar) {
 
     let listaHoteles = hoteles;
+    let text = document.querySelector('#noMatch');
+    let table = document.querySelector('table');
+
+    table.style.display = "table";
+    text.hidden = true;
 
     if (!paBuscar) {
         paBuscar = '';
@@ -66,7 +73,6 @@ function mostrarHoteles(paBuscar) {
             let cRanking = fila.insertCell();
             let cDetalles = fila.insertCell();
             let cEstado = fila.insertCell();
-            let cOpciones = fila.insertCell();
 
             cNombre.innerHTML = listaHoteles[i]['nombre'];
             cDireccion.innerHTML = listaHoteles[i]['provincia'] + ', ' + listaHoteles[i]['canton'] + ', ' + listaHoteles[i]['distrito'];
@@ -140,105 +146,121 @@ function mostrarHoteles(paBuscar) {
             });
             btnCalificar.appendChild(sello);
             cCalificar.appendChild(btnCalificar);
-            // BOTON EDITAR
-            // BOTON EDITAR
-            // BOTON EDITAR
-            let btnEditar = document.createElement('a');
-            btnEditar.classList.add('far');
-            btnEditar.classList.add('fa-edit');
 
-            // Se toma el id del hotel
-            btnEditar.id = listaHoteles[i]['_id'];
+            if (rolActual == 'administrador') {
+                let thOpciones = document.querySelector('#cOpcionesTh');
+                thOpciones.hidden = false;
+                let cOpciones = fila.insertCell();
 
-            // Se guarda en el localStorage lat y lng.
-            btnEditar.addEventListener('click', function () {
+                // BOTON EDITAR
+                // BOTON EDITAR
+                // BOTON EDITAR
+                let btnEditar = document.createElement('a');
+                btnEditar.classList.add('far');
+                btnEditar.classList.add('fa-edit');
 
-            });
+                // Se toma el id del hotel
+                btnEditar.id = listaHoteles[i]['_id'];
 
-            // BOTON ACTIVAR
-            // BOTON ACTIVAR
-            // BOTON ACTIVAR
-            let btnActivar = document.createElement('a');
-            btnActivar.classList.add('fas');
-            btnActivar.classList.add('fa-check-circle');
-            // Se toma el id del hotel
-            btnActivar.id = listaHoteles[i]['_id'];
-
-            // Se guarda en el localStorage lat y lng.
-            btnActivar.addEventListener('click', function () {
-                swal({
-                    title: '¿Seguro que desea activar este hotel?',
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si'
-                }).then((result) => {
-                    if (result.value) {
-                        activar_hotel(this.id);
-                        window.location.reload();
-                    }
+                // Se guarda en el localStorage lat y lng.
+                btnEditar.addEventListener('click', function () {
+                    localStorage.setItem('btnPrevio', 'editar');
+                    localStorage.setItem('idHotel', this.id);
+                    window.location.href = "../html/hoteles-registrar.html";
                 });
-            });
 
-            // BOTON INACTIVAR
-            // BOTON INACTIVAR
-            // BOTON INACTIVAR
-            let btnInactivar = document.createElement('a');
-            btnInactivar.classList.add('fas');
-            btnInactivar.classList.add('fa-times-circle');
+                // BOTON ACTIVAR
+                // BOTON ACTIVAR
+                // BOTON ACTIVAR
+                let btnActivar = document.createElement('a');
+                btnActivar.classList.add('fas');
+                btnActivar.classList.add('fa-check-circle');
+                // Se toma el id del hotel
+                btnActivar.id = listaHoteles[i]['_id'];
 
-            // Se toma el id del hotel
-            btnInactivar.id = listaHoteles[i]['_id'];
-
-            // Se guarda en el localStorage lat y lng.
-            btnInactivar.addEventListener('click', function () {
-                swal({
-                    title: '¿Seguro que desea inactivar este hotel?',
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si'
-                }).then((result) => {
-                    if (result.value) {
-                        inactivar_hotel(this.id);
-                        window.location.reload();
-                    }
+                // Se guarda en el localStorage lat y lng.
+                btnActivar.addEventListener('click', function () {
+                    swal({
+                        title: '¿Seguro que desea activar este hotel?',
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si'
+                    }).then((result) => {
+                        if (result.value) {
+                            activar_hotel(this.id);
+                            window.location.reload();
+                        }
+                    });
                 });
-            });
 
-            // BOTON BORRAR
-            // BOTON BORRAR
-            // BOTON BORRAR
-            let btnBorrar = document.createElement('a');
-            btnBorrar.classList.add('fas');
-            btnBorrar.classList.add('fa-trash-alt');
+                // BOTON INACTIVAR
+                // BOTON INACTIVAR
+                // BOTON INACTIVAR
+                let btnInactivar = document.createElement('a');
+                btnInactivar.classList.add('fas');
+                btnInactivar.classList.add('fa-times-circle');
 
-            // Se toma el id del hotel
-            btnBorrar.id = listaHoteles[i]['_id'];
+                // Se toma el id del hotel
+                btnInactivar.id = listaHoteles[i]['_id'];
 
-            // Se guarda en el localStorage lat y lng.
-            btnBorrar.addEventListener('click', function () {
-                swal({
-                    title: '¿Seguro que desea eliminar este hotel?',
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si'
-                }).then((result) => {
-                    if (result.value) {
-                        eliminar_hotel(this.id);
-                        window.location.reload();
-                    }
+                // Se guarda en el localStorage lat y lng.
+                btnInactivar.addEventListener('click', function () {
+                    swal({
+                        title: '¿Seguro que desea inactivar este hotel?',
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si'
+                    }).then((result) => {
+                        if (result.value) {
+                            inactivar_hotel(this.id);
+                            window.location.reload();
+                        }
+                    });
                 });
-            });
 
-            cOpciones.appendChild(btnActivar);
-            cOpciones.appendChild(btnInactivar);
-            cOpciones.appendChild(btnEditar);
-            cOpciones.appendChild(btnBorrar);
+                // BOTON BORRAR
+                // BOTON BORRAR
+                // BOTON BORRAR
+                let btnBorrar = document.createElement('a');
+                btnBorrar.classList.add('fas');
+                btnBorrar.classList.add('fa-trash-alt');
+
+                // Se toma el id del hotel
+                btnBorrar.id = listaHoteles[i]['_id'];
+
+                // Se guarda en el localStorage lat y lng.
+                btnBorrar.addEventListener('click', function () {
+                    swal({
+                        title: '¿Seguro que desea eliminar este hotel?',
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si'
+                    }).then((result) => {
+                        if (result.value) {
+                            eliminar_hotel(this.id);
+                            window.location.reload();
+                        }
+                    });
+                });
+
+                cOpciones.appendChild(btnActivar);
+                cOpciones.appendChild(btnInactivar);
+                cOpciones.appendChild(btnEditar);
+                cOpciones.appendChild(btnBorrar);
+            }
+        } else {
+            table.style.display = "none";
+            text.hidden = false;
+
+            inputBuscar.addEventListener('keyup', function () {
+                mostrarHoteles();
+            });
         }
     };
 };

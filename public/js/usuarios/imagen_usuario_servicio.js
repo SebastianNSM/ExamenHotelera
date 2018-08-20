@@ -47,6 +47,9 @@ function imgHtml(id) {
 function getImgID(){
     return imgID
 }
+function setImgID(id){
+    imgID = id;
+}
 function resetImg(){
    imgHtml('user');
 }
